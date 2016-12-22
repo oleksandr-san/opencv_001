@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Файлы исходного кода">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Заголовочные файлы">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Include Headers">
+      <UniqueIdentifier>{ce9a3eb1-9688-4100-98f3-f97bb912eb54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Include Headers\Objects">
+      <UniqueIdentifier>{f8595e98-9da0-4c34-a6e8-35fe7d4e65bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Include Headers\Utils">
+      <UniqueIdentifier>{38b0cee1-2002-4988-a423-d3150e75a667}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Include Headers\Tasks">
+      <UniqueIdentifier>{19a9af38-25b7-4c76-87bb-0c69ff6e74c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Sources">
+      <UniqueIdentifier>{f75ea506-5d72-47d9-946c-126b1d07959f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Sources\Tasks">
+      <UniqueIdentifier>{882e47f4-f90b-4fb8-9ca4-4b3c3ab27b5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Sources\Tasks\Task Implementations">
+      <UniqueIdentifier>{55f57679-b49c-4b86-8a96-b047e1038ed5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Sources\Tasks\TaskManager">
+      <UniqueIdentifier>{02d194ac-1179-408b-8938-1a3da2bb3cdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Sources\Objects">
+      <UniqueIdentifier>{5950bcc9-2ff2-4637-b8c5-e0393f50a163}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Include Headers\Accessor">
+      <UniqueIdentifier>{2b6238ee-e8df-480d-9dbd-f5b5fad00e4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Sources\Accessor">
+      <UniqueIdentifier>{fde79403-a0b1-4183-be25-f59d7b17c7f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Sources\Tasks\Task Properties">
+      <UniqueIdentifier>{4de24928-7dd6-4266-8f16-61d924022ef4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Include Headers\Exceptions">
+      <UniqueIdentifier>{e0e859de-dade-40f1-a597-0a8b50f03320}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Sources\Tasks\Task Implementations\OpenCV_CUDA">
+      <UniqueIdentifier>{fed99d8b-673d-495d-a175-cc0d9522e84d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Sources\Tasks\Task Implementations\OpenCV">
+      <UniqueIdentifier>{03db5267-0f58-4fe9-aaed-a5551be86c46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Sources\Tasks\Task Implementations\Base">
+      <UniqueIdentifier>{8c53a3b7-5194-49b0-abcc-cb9a56193898}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Sources\Tasks\Task Implementations\Custom">
+      <UniqueIdentifier>{70a0bbad-5c91-4718-90fd-b5c7c871b93b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Sources\Tasks\Task Implementations\OpenMP">
+      <UniqueIdentifier>{789a1d25-9e06-4499-a6b2-12ff215762de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Sources\Tasks\Task Implementations\Custom_CUDA">
+      <UniqueIdentifier>{22c0531a-2e8e-49e5-affe-e9bb7c0596b7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\objects\processing_object.cpp">
+      <Filter>Файлы исходного кода\Sources\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\tasks\task_result.cpp">
+      <Filter>Файлы исходного кода\Sources\Tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\objects\objects_controller.cpp">
+      <Filter>Файлы исходного кода\Sources\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\tasks\task_manager.cpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\TaskManager</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\accessor\accessor.cpp">
+      <Filter>Файлы исходного кода\Sources\Accessor</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\tasks\task_properties.cpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Properties</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\tasks\task_implementations\opencv_cuda\opencv_cuda_filtering_task.cpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenCV_CUDA</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\tasks\task_implementations\opencv_cuda\opencv_cuda_image_processing_task.cpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenCV_CUDA</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\tasks\task_implementations\base\base_task.cpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\tasks\task_implementations\opencv\opencv_filtering_task.cpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenCV</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\tasks\task_implementations\opencv\opencv_image_processing_task.cpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenCV</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\tasks\task_implementations\custom\custom_image_processing_task.cpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\Custom</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\tasks\task_implementations\custom\custom_box_filter_task.cpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\Custom</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\tasks\task_implementations\custom\custom_sobel_filter_task.cpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\Custom</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\tasks\task_implementations\openmp\openmp_box_filter_task.cpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenMP</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\tasks\task_implementations\openmp\openmp_image_processing_task.cpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenMP</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\tasks\task_implementations\openmp\openmp_sobel_filter_task.cpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenMP</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\tasks\task_implementations\custom_cuda\custom_cuda_task.cpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\Custom_CUDA</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ih\objects\iprocessing_object.hpp">
+      <Filter>Файлы исходного кода\Include Headers\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="ih\utils\utils.hpp">
+      <Filter>Файлы исходного кода\Include Headers\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\objects\processing_object.hpp">
+      <Filter>Файлы исходного кода\Sources\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="ih\objects\iobjects_controller.hpp">
+      <Filter>Файлы исходного кода\Include Headers\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\tasks\task_result.hpp">
+      <Filter>Файлы исходного кода\Sources\Tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\objects\objects_controller.hpp">
+      <Filter>Файлы исходного кода\Sources\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="ih\tasks\itask_result.hpp">
+      <Filter>Файлы исходного кода\Include Headers\Tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="ih\tasks\itask.hpp">
+      <Filter>Файлы исходного кода\Include Headers\Tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="ih\tasks\task_kind.hpp">
+      <Filter>Файлы исходного кода\Include Headers\Tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="ih\tasks\task_implementation_type.hpp">
+      <Filter>Файлы исходного кода\Include Headers\Tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="ih\tasks\itask_manager.hpp">
+      <Filter>Файлы исходного кода\Include Headers\Tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\tasks\task_manager.hpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\TaskManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ih\accessor\accessor.hpp">
+      <Filter>Файлы исходного кода\Include Headers\Accessor</Filter>
+    </ClInclude>
+    <ClInclude Include="ih\tasks\itask_properties.hpp">
+      <Filter>Файлы исходного кода\Include Headers\Tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\tasks\task_properties.hpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Properties</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\tasks\task_context.hpp">
+      <Filter>Файлы исходного кода\Sources\Tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="ih\exceptions\exceptions.hpp">
+      <Filter>Файлы исходного кода\Include Headers\Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\tasks\task_implementations\opencv_cuda\base_opencv_cuda_task.hpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenCV_CUDA</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\tasks\task_implementations\opencv_cuda\opencv_cuda_filtering_task.hpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenCV_CUDA</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\tasks\task_implementations\opencv_cuda\opencv_cuda_image_processing_task.hpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenCV_CUDA</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\tasks\task_implementations\base\base_typed_task.hpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\tasks\task_implementations\base\base_task.hpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\tasks\task_implementations\opencv\base_opencv_task.hpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenCV</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\tasks\task_implementations\opencv\opencv_filtering_task.hpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenCV</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\tasks\task_implementations\opencv\opencv_image_processing_task.hpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenCV</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\tasks\task_implementations\custom\custom_image_processing_task.hpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\Custom</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\tasks\task_implementations\custom\custom_box_filter_task.hpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\Custom</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\tasks\task_implementations\custom\custom_sobel_filter_task.hpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\Custom</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\tasks\task_implementations\openmp\openmp_box_filter_task.hpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenMP</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\tasks\task_implementations\openmp\openmp_image_processing_task.hpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenMP</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\tasks\task_implementations\openmp\openmp_sobel_filter_task.hpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenMP</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\tasks\task_implementations\custom_cuda\custom_cuda_task.hpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\Custom_CUDA</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

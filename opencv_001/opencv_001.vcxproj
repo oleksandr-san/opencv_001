@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A9B810C3-9E6C-40AC-B45A-013A7F6A9112}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>opencv_001</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(ProjectPath)\..\;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(ProjectPath)\..\;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(ProjectPath)\..\;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(ProjectPath)\..\;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(OPENCV_DIR)\build\install\include;$(BOOST_ROOT);$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(BOOST_ROOT)\lib\$(ProcessorArchitecture);$(OPENCV_DIR)\build\install\x64\vc14\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_calib3d310d.lib;opencv_core310d.lib;opencv_cudaarithm310d.lib;opencv_cudabgsegm310d.lib;opencv_cudacodec310d.lib;opencv_cudafeatures2d310d.lib;opencv_cudafilters310d.lib;opencv_cudaimgproc310d.lib;opencv_cudalegacy310d.lib;opencv_cudaobjdetect310d.lib;opencv_cudaoptflow310d.lib;opencv_cudastereo310d.lib;opencv_cudawarping310d.lib;opencv_cudev310d.lib;opencv_features2d310d.lib;opencv_flann310d.lib;opencv_highgui310d.lib;opencv_imgcodecs310d.lib;opencv_imgproc310d.lib;opencv_ml310d.lib;opencv_objdetect310d.lib;opencv_photo310d.lib;opencv_shape310d.lib;opencv_stitching310d.lib;opencv_superres310d.lib;opencv_video310d.lib;opencv_videoio310d.lib;opencv_videostab310d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(OPENCV_DIR)\build\install\include;$(BOOST_ROOT);$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(BOOST_ROOT)\lib\$(ProcessorArchitecture);$(OPENCV_DIR)\build\install\x64\vc14\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_calib3d310d.lib;opencv_core310d.lib;opencv_cudaarithm310d.lib;opencv_cudabgsegm310d.lib;opencv_cudacodec310d.lib;opencv_cudafeatures2d310d.lib;opencv_cudafilters310d.lib;opencv_cudaimgproc310d.lib;opencv_cudalegacy310d.lib;opencv_cudaobjdetect310d.lib;opencv_cudaoptflow310d.lib;opencv_cudastereo310d.lib;opencv_cudawarping310d.lib;opencv_cudev310d.lib;opencv_features2d310d.lib;opencv_flann310d.lib;opencv_highgui310d.lib;opencv_imgcodecs310d.lib;opencv_imgproc310d.lib;opencv_ml310d.lib;opencv_objdetect310d.lib;opencv_photo310d.lib;opencv_shape310d.lib;opencv_stitching310d.lib;opencv_superres310d.lib;opencv_video310d.lib;opencv_videoio310d.lib;opencv_videostab310d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(OPENCV_DIR)\build\install\include;$(BOOST_ROOT);$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OpenMPSupport>true</OpenMPSupport>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(BOOST_ROOT)\lib\$(ProcessorArchitecture);$(OPENCV_DIR)\build\install\x64\vc14\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_calib3d310.lib;opencv_core310.lib;opencv_cudaarithm310.lib;opencv_cudabgsegm310.lib;opencv_cudacodec310.lib;opencv_cudafeatures2d310.lib;opencv_cudafilters310.lib;opencv_cudaimgproc310.lib;opencv_cudalegacy310.lib;opencv_cudaobjdetect310.lib;opencv_cudaoptflow310.lib;opencv_cudastereo310.lib;opencv_cudawarping310.lib;opencv_cudev310.lib;opencv_features2d310.lib;opencv_flann310.lib;opencv_highgui310.lib;opencv_imgcodecs310.lib;opencv_imgproc310.lib;opencv_ml310.lib;opencv_objdetect310.lib;opencv_photo310.lib;opencv_shape310.lib;opencv_stitching310.lib;opencv_superres310.lib;opencv_video310.lib;opencv_videoio310.lib;opencv_videostab310.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(OPENCV_DIR)\build\install\include;$(BOOST_ROOT);$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OpenMPSupport>true</OpenMPSupport>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(BOOST_ROOT)\lib\$(ProcessorArchitecture);$(OPENCV_DIR)\build\install\x64\vc14\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_calib3d310.lib;opencv_core310.lib;opencv_cudaarithm310.lib;opencv_cudabgsegm310.lib;opencv_cudacodec310.lib;opencv_cudafeatures2d310.lib;opencv_cudafilters310.lib;opencv_cudaimgproc310.lib;opencv_cudalegacy310.lib;opencv_cudaobjdetect310.lib;opencv_cudaoptflow310.lib;opencv_cudastereo310.lib;opencv_cudawarping310.lib;opencv_cudev310.lib;opencv_features2d310.lib;opencv_flann310.lib;opencv_highgui310.lib;opencv_imgcodecs310.lib;opencv_imgproc310.lib;opencv_ml310.lib;opencv_objdetect310.lib;opencv_photo310.lib;opencv_shape310.lib;opencv_stitching310.lib;opencv_superres310.lib;opencv_video310.lib;opencv_videoio310.lib;opencv_videostab310.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="sources\accessor\accessor.cpp" />
+    <ClCompile Include="sources\objects\objects_controller.cpp" />
+    <ClCompile Include="sources\objects\processing_object.cpp" />
+    <ClCompile Include="sources\tasks\task_implementations\base\base_task.cpp" />
+    <ClCompile Include="sources\tasks\task_implementations\custom\custom_box_filter_task.cpp" />
+    <ClCompile Include="sources\tasks\task_implementations\custom\custom_image_processing_task.cpp" />
+    <ClCompile Include="sources\tasks\task_implementations\custom\custom_sobel_filter_task.cpp" />
+    <ClCompile Include="sources\tasks\task_implementations\custom_cuda\custom_cuda_task.cpp" />
+    <ClCompile Include="sources\tasks\task_implementations\opencv\opencv_filtering_task.cpp" />
+    <ClCompile Include="sources\tasks\task_implementations\opencv\opencv_image_processing_task.cpp" />
+    <ClCompile Include="sources\tasks\task_implementations\opencv_cuda\opencv_cuda_filtering_task.cpp" />
+    <ClCompile Include="sources\tasks\task_implementations\opencv_cuda\opencv_cuda_image_processing_task.cpp" />
+    <ClCompile Include="sources\tasks\task_implementations\openmp\openmp_box_filter_task.cpp" />
+    <ClCompile Include="sources\tasks\task_implementations\openmp\openmp_image_processing_task.cpp" />
+    <ClCompile Include="sources\tasks\task_implementations\openmp\openmp_sobel_filter_task.cpp" />
+    <ClCompile Include="sources\tasks\task_manager.cpp" />
+    <ClCompile Include="sources\tasks\task_properties.cpp" />
+    <ClCompile Include="sources\tasks\task_result.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ih\accessor\accessor.hpp" />
+    <ClInclude Include="ih\exceptions\exceptions.hpp" />
+    <ClInclude Include="ih\objects\iobjects_controller.hpp" />
+    <ClInclude Include="ih\objects\iprocessing_object.hpp" />
+    <ClInclude Include="ih\tasks\itask.hpp" />
+    <ClInclude Include="ih\tasks\itask_manager.hpp" />
+    <ClInclude Include="ih\tasks\itask_properties.hpp" />
+    <ClInclude Include="ih\tasks\itask_result.hpp" />
+    <ClInclude Include="ih\tasks\task_implementation_type.hpp" />
+    <ClInclude Include="ih\tasks\task_kind.hpp" />
+    <ClInclude Include="ih\utils\utils.hpp" />
+    <ClInclude Include="sources\objects\objects_controller.hpp" />
+    <ClInclude Include="sources\objects\processing_object.hpp" />
+    <ClInclude Include="sources\tasks\task_context.hpp" />
+    <ClInclude Include="sources\tasks\task_implementations\base\base_task.hpp" />
+    <ClInclude Include="sources\tasks\task_implementations\base\base_typed_task.hpp" />
+    <ClInclude Include="sources\tasks\task_implementations\custom\custom_box_filter_task.hpp" />
+    <ClInclude Include="sources\tasks\task_implementations\custom\custom_image_processing_task.hpp" />
+    <ClInclude Include="sources\tasks\task_implementations\custom\custom_sobel_filter_task.hpp" />
+    <ClInclude Include="sources\tasks\task_implementations\custom_cuda\custom_cuda_task.hpp" />
+    <ClInclude Include="sources\tasks\task_implementations\opencv\base_opencv_task.hpp" />
+    <ClInclude Include="sources\tasks\task_implementations\opencv\opencv_filtering_task.hpp" />
+    <ClInclude Include="sources\tasks\task_implementations\opencv\opencv_image_processing_task.hpp" />
+    <ClInclude Include="sources\tasks\task_implementations\opencv_cuda\base_opencv_cuda_task.hpp" />
+    <ClInclude Include="sources\tasks\task_implementations\opencv_cuda\opencv_cuda_filtering_task.hpp" />
+    <ClInclude Include="sources\tasks\task_implementations\opencv_cuda\opencv_cuda_image_processing_task.hpp" />
+    <ClInclude Include="sources\tasks\task_implementations\openmp\openmp_box_filter_task.hpp" />
+    <ClInclude Include="sources\tasks\task_implementations\openmp\openmp_image_processing_task.hpp" />
+    <ClInclude Include="sources\tasks\task_implementations\openmp\openmp_sobel_filter_task.hpp" />
+    <ClInclude Include="sources\tasks\task_manager.hpp" />
+    <ClInclude Include="sources\tasks\task_properties.hpp" />
+    <ClInclude Include="sources\tasks\task_result.hpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
