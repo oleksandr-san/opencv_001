@@ -16,65 +16,112 @@ namespace Tasks {
 			Objects::IProcessingObject::List _objects
 	)
 	{
-		Utils::TimePoint startTime = Utils::TimePoint::clock::now();
+		auto result = std::make_shared< TaskResult >( shared_from_this() );
 
-		auto property = getProperties().getIntProperty( TaskProperty::RepeatsCount );
-		const int repeatsCount = property ? property.get() : 1;
+		const int repeatsCount = getProperties().getRepeatsCount();
+
+		ITaskResult::ObjectResultList& objectResults = result->takeObjectResults();
+
+		for ( auto object : _objects )
+			objectResults.push_back(
+					ITaskResult::ObjectResult(
+							object
+						,	std::vector< ITaskResult::TimeResult >(
+								static_cast< size_t >( repeatsCount )
+							)
+					)
+				);
 
 		TaskContext context;
 
+		const size_t objectsCount = _objects.size();
 		for ( int i = 0; i < repeatsCount; ++i )
 		{
 			context.setIteration( i );
 
-			for ( auto object : _objects )
+			for ( int j = 0; j < objectsCount; ++j )
 			{
-				context.setObject( object );
+				context.setObject( _objects[ j ] );
+				ITaskResult::TimeResult& timeResult = objectResults[ j ].second[ i ];
 
-				runInternal( context );
+				ObjectData data;
+
+				timeResult.m_loadTime.first = Utils::TimePoint::clock::now();
+				prepareObjectData( data, context );
+				timeResult.m_loadTime.second = Utils::TimePoint::clock::now();
+
+				timeResult.m_processTime.first = Utils::TimePoint::clock::now();
+				runInternal( data );
+				timeResult.m_processTime.second = Utils::TimePoint::clock::now();
+
+				timeResult.m_saveTime.first = Utils::TimePoint::clock::now();
+				saveObjectData( data, context );
+				timeResult.m_saveTime.second = Utils::TimePoint::clock::now();
 			}
 		}
-
-		Utils::TimePoint endTime = Utils::TimePoint::clock::now();
-	
-		ITaskResult::Ptr result = getResult();
-
-		result->setStartTime(startTime);
-		result->setEndTime(endTime);
 
 		return result;
 	}
 
-	ITaskProperties& BaseTask::getProperties()
+	ITaskProperties& BaseTask::getProperties() const
 	{
 		return *m_properties;
 	}
 
-	ITaskResult::Ptr BaseTask::getResult()
+	ITaskProperties& BaseTask::takeProperties()
 	{
-		return ITaskResult::Ptr( new TaskResult() );
+		return *m_properties;
 	}
 
-	void BaseTask::loadObject(cv::Mat & _target, TaskContext & _context)
+	void BaseTask::prepareObjectData(ObjectData& _data, TaskContext & _context)
 	{
 		const std::string path = _context.getObject()->getPath().string();
-
-		_target = cv::imread( path );
-
-		if ( !_target.data )
+		_data.m_source = cv::imread( path, cv::IMREAD_COLOR  );
+		if ( !_data.m_source.data )
 			throw Exceptions::OpenFileError( path );
+
+		cv::cvtColor( _data.m_source, _data.m_source, cv::COLOR_BGR2BGRA );
+
+		_data.m_target.create(_data.m_source.rows, _data.m_source.cols, _data.m_source.type() );
 	}
 
-	void BaseTask::saveObject(cv::Mat & _source, TaskContext & _context)
+	void BaseTask::saveObjectData( ObjectData& _data, TaskContext& _context )
 	{
-		auto outputDirectory = getProperties().getStringProperty(
-				TaskProperty::OutputDirectory
-			);
+		const bool modifyOriginal = getProperties().getModifyOriginal();
 
-		if ( outputDirectory )
+		std::string outputPath;
+
+		if ( modifyOriginal )
 		{
-
+			outputPath = _context.getObject()->getPath().string();
 		}
+		else
+		{
+			auto& objectPath = _context.getObject()->getPath();
+
+			const std::string directoryStr( getProperties().getOutputDirectory() );
+
+			Utils::Path directoryPath =
+					directoryStr.empty()
+				?	objectPath.parent_path()
+				:	Utils::Path( directoryStr );
+
+			if ( !Filesystem::exists(directoryPath) )
+				Filesystem::create_directory(directoryPath);
+
+			outputPath =
+				( directoryPath / objectPath.stem() ).string() +
+				"_" +
+				std::string( TaskType::getCodeName( getType() ) ) +
+				"_" +
+				std::string( TaskImplementationType::getCodeName( getImplementationType() ) )+
+				"_" +
+				boost::lexical_cast< std::string >( _context.getIteration() + 1) +
+				objectPath.extension().string()
+				;
+		}
+
+		cv::imwrite( outputPath, _data.m_target );
 	}
 
 }

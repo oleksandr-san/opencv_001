@@ -16,6 +16,21 @@ namespace Exceptions {
 
 	};
 
+	class InvalidParameterException : public BaseException
+	{
+
+	public:
+
+		InvalidParameterException(
+			const std::string& parameter,
+			const std::string& value
+		)
+			:	BaseException( "\'" + value + "\' value is invalid for \'" + parameter + "\' parameter" )
+		{
+		}
+
+	};
+
 	class OpenFileError : public BaseException
 	{
 
@@ -28,6 +43,17 @@ namespace Exceptions {
 
 	};
 
+	class MissingFileException : public BaseException
+	{
+
+	public:
+
+		MissingFileException( const std::string& _filePath )
+			:	BaseException( "File \'" + _filePath + "\'is missing" )
+		{
+		}
+
+	};
 }
 
 #endif

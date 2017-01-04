@@ -32,22 +32,9 @@ namespace Tasks {
 
 	protected:
 
-		virtual void runInternal( TaskContext& _context ) override
+		virtual void runInternal( ObjectData& _data )
 		{
-			cv::Mat host_source;
-			loadObject( host_source, _context );
-
-			cv::cuda::GpuMat device_source;
-			device_source.upload( host_source );
-
-			cv::cuda::GpuMat device_target;
-
-			processObject( host_source, device_source, device_target );
-
-			cv::Mat host_target;
-			device_target.download( host_target );
-
-			saveObject( host_target, _context );
+			processObject( _data.m_source, _data.m_deviceSource, _data.m_deviceTarget );
 		}
 
 		virtual void processObject(
@@ -55,6 +42,21 @@ namespace Tasks {
 				cv::cuda::GpuMat& _deviceSource,
 				cv::cuda::GpuMat& _deviceTarget
 			) = 0;
+
+
+		virtual void prepareObjectData( ObjectData& _data, TaskContext& _context )
+		{
+			BaseClass::prepareObjectData( _data, _context );
+
+			_data.m_deviceSource.upload( _data.m_source );
+		}
+
+		virtual void saveObjectData( ObjectData& _data, TaskContext& _context )
+		{
+			_data.m_deviceTarget.download( _data.m_target );
+
+			BaseClass::saveObjectData( _data, _context );
+		}
 
 	};
 

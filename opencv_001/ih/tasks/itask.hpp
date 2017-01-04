@@ -4,7 +4,7 @@
 #include "ih/utils/utils.hpp"
 #include "ih/tasks/itask_result.hpp"
 #include "ih/tasks/itask_properties.hpp"
-#include "ih/tasks/task_kind.hpp"
+#include "ih/tasks/task_type.hpp"
 #include "ih/tasks/task_implementation_type.hpp"
 #include "ih/objects/iprocessing_object.hpp"
 
@@ -23,8 +23,10 @@ namespace Tasks {
 
 		virtual TaskImplementationType::Enum getImplementationType() const = 0;
 
-		virtual ITaskProperties& getProperties() = 0;
+		virtual ITaskProperties& getProperties() const = 0;
 		
+		virtual ITaskProperties& takeProperties() = 0;
+
 		virtual ITaskResult::Ptr run(
 				Objects::IProcessingObject::List _objects
 			) = 0;

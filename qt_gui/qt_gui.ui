@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>932</width>
-    <height>694</height>
+    <width>985</width>
+    <height>898</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -29,39 +29,26 @@
           </property>
           <widget class="QWidget" name="verticalLayoutWidget">
            <layout class="QGridLayout" name="gridLayout_4">
-            <item row="1" column="2">
-             <widget class="Line" name="line_4">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
+            <item row="0" column="2">
+             <widget class="QFrame" name="frame">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
               </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <widget class="Line" name="line_3">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
               </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="Line" name="line">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QLabel" name="label">
-              <property name="text">
-               <string>Image</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="Line" name="line_5">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
+              <layout class="QGridLayout" name="gridLayout_10">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_8">
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </widget>
             </item>
            </layout>
@@ -89,12 +76,8 @@
                      <string>Image List</string>
                     </property>
                     <layout class="QGridLayout" name="gridLayout_9">
-                     <item row="0" column="0">
-                      <widget class="QListWidget" name="listWidget">
-                       <property name="selectionMode">
-                        <enum>QAbstractItemView::MultiSelection</enum>
-                       </property>
-                      </widget>
+                     <item row="1" column="0">
+                      <widget class="QListWidget" name="listWidget"/>
                      </item>
                     </layout>
                    </widget>
@@ -156,6 +139,22 @@
                     </property>
                    </widget>
                   </item>
+                  <item row="4" column="1">
+                   <widget class="QSpinBox" name="spinBox">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimum">
+                     <number>1</number>
+                    </property>
+                    <property name="maximum">
+                     <number>999999</number>
+                    </property>
+                   </widget>
+                  </item>
                   <item row="5" column="0">
                    <widget class="QLabel" name="label_3">
                     <property name="text">
@@ -180,23 +179,26 @@
                     <property name="maximum">
                      <number>999</number>
                     </property>
+                    <property name="singleStep">
+                     <number>2</number>
+                    </property>
                    </widget>
                   </item>
                   <item row="6" column="0">
                    <widget class="QLabel" name="label_4">
                     <property name="text">
-                     <string>Sobel Kernel Size</string>
+                     <string>Sigma X</string>
                     </property>
                    </widget>
                   </item>
-                  <item row="7" column="0">
+                  <item row="8" column="0">
                    <widget class="QLabel" name="label_6">
                     <property name="text">
                      <string>Output Directory</string>
                     </property>
                    </widget>
                   </item>
-                  <item row="7" column="1">
+                  <item row="8" column="1">
                    <widget class="QLineEdit" name="lineEdit">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -210,36 +212,37 @@
                       <height>16777215</height>
                      </size>
                     </property>
+                    <property name="readOnly">
+                     <bool>true</bool>
+                    </property>
                    </widget>
                   </item>
-                  <item row="4" column="1">
-                   <widget class="QSpinBox" name="spinBox">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="minimum">
-                     <number>1</number>
-                    </property>
-                    <property name="maximum">
-                     <number>999999</number>
+                  <item row="9" column="0">
+                   <widget class="QLabel" name="label">
+                    <property name="text">
+                     <string>Modify Original</string>
                     </property>
                    </widget>
+                  </item>
+                  <item row="9" column="1">
+                   <widget class="QComboBox" name="comboBox_3"/>
                   </item>
                   <item row="6" column="1">
-                   <widget class="QSpinBox" name="spinBox_3">
-                    <property name="minimum">
-                     <number>1</number>
-                    </property>
-                    <property name="maximum">
-                     <number>7</number>
-                    </property>
-                    <property name="singleStep">
-                     <number>2</number>
+                   <widget class="QDoubleSpinBox" name="doubleSpinBox">
+                    <property name="value">
+                     <double>1.000000000000000</double>
                     </property>
                    </widget>
+                  </item>
+                  <item row="10" column="0">
+                   <widget class="QLabel" name="label_9">
+                    <property name="text">
+                     <string>Optimize Block Processing</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="10" column="1">
+                   <widget class="QComboBox" name="comboBox_4"/>
                   </item>
                  </layout>
                 </widget>
@@ -253,15 +256,18 @@
                 <layout class="QGridLayout" name="gridLayout_8">
                  <item row="0" column="0">
                   <widget class="QPushButton" name="pushButton_2">
+                   <property name="enabled">
+                    <bool>true</bool>
+                   </property>
                    <property name="text">
-                    <string>Add Image</string>
+                    <string>Add</string>
                    </property>
                   </widget>
                  </item>
                  <item row="0" column="1">
                   <widget class="QPushButton" name="pushButton_3">
                    <property name="text">
-                    <string>Remove Image</string>
+                    <string>Remove</string>
                    </property>
                   </widget>
                  </item>
@@ -275,7 +281,7 @@
                  <item row="1" column="1">
                   <widget class="QPushButton" name="pushButton">
                    <property name="text">
-                    <string>Remove All Images</string>
+                    <string>Show</string>
                    </property>
                   </widget>
                  </item>
@@ -298,14 +304,21 @@
            <string>Results</string>
           </property>
           <layout class="QGridLayout" name="gridLayout_6">
-           <item row="0" column="0">
-            <widget class="QTableView" name="tableView">
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
+           <item row="0" column="0" rowspan="2">
+            <widget class="QTreeWidget" name="treeWidget">
+             <property name="columnCount">
+              <number>2</number>
              </property>
-             <property name="frameShadow">
-              <enum>QFrame::Sunken</enum>
-             </property>
+             <column>
+              <property name="text">
+               <string notr="true">1</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string notr="true">2</string>
+              </property>
+             </column>
             </widget>
            </item>
           </layout>

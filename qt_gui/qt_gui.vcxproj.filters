@@ -38,8 +38,11 @@
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
-    <Filter Include="ImageViewer">
+    <Filter Include="Source Files\ImageViewer">
       <UniqueIdentifier>{2069c4e7-abeb-4e82-bc69-327423b7e9b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Run Manager">
+      <UniqueIdentifier>{639e8e73-816a-478a-8f45-f4394aa083a6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -59,7 +62,7 @@
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="image_viewer\image_viewer.cpp">
-      <Filter>ImageViewer</Filter>
+      <Filter>Source Files\ImageViewer</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_image_viewer.cpp">
       <Filter>Generated Files\Debug</Filter>
@@ -67,11 +70,11 @@
     <ClCompile Include="GeneratedFiles\Release\moc_image_viewer.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="run_manager\run_manager.cpp">
+      <Filter>Source Files\Run Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="qt_gui.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="qt_gui.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
@@ -79,7 +82,10 @@
       <Filter>Resource Files</Filter>
     </CustomBuild>
     <CustomBuild Include="image_viewer\image_viewer.hpp">
-      <Filter>ImageViewer</Filter>
+      <Filter>Source Files\ImageViewer</Filter>
+    </CustomBuild>
+    <CustomBuild Include="qt_gui.h">
+      <Filter>Source Files</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -87,7 +93,10 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="resources.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="run_manager\run_manager.hpp">
+      <Filter>Source Files\Run Manager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

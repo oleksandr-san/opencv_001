@@ -4,16 +4,22 @@
 #include <unordered_map>
 #include <opencv2/cudafilters.hpp>
 
-#include "sources/tasks/task_implementations/opencv/base_opencv_task.hpp"
+#include "sources/tasks/task_implementations/base/base_typed_task.hpp"
 
 namespace Tasks {
 
 	class OpenCV_Grayscale_Task
-		:	public Base_OpenCV_Task< TaskType::Grayscale >
+		:	public BaseTypedTask<
+							TaskType::Grayscale
+						,	TaskImplementationType::OpenCV
+					>
 	{
 
 		typedef
-			Base_OpenCV_Task< TaskType::Grayscale >
+			BaseTypedTask<
+						TaskType::Grayscale
+					,	TaskImplementationType::OpenCV
+				>
 			BaseClass;
 
 	public:
@@ -25,10 +31,35 @@ namespace Tasks {
 
 	protected:
 
-		virtual void processObject(
-				cv::Mat& _source,
-				cv::Mat& _target
-			) override;
+		virtual void runInternal( ObjectData& _data )  override;
+
+	};
+
+
+	class OpenCV_Blur_Task
+		:	public BaseTypedTask<
+							TaskType::Blur
+						,	TaskImplementationType::OpenCV
+					>
+	{
+
+		typedef
+			BaseTypedTask<
+						TaskType::Blur
+					,	TaskImplementationType::OpenCV
+				>
+			BaseClass;
+
+	public:
+
+		OpenCV_Blur_Task( ITaskProperties::Ptr _properties )
+			:	BaseClass( _properties )
+		{
+		}
+
+	protected:
+
+		virtual void runInternal( ObjectData& _data )  override;
 
 	};
 

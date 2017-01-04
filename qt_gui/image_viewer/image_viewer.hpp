@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QImage>
+#include <qevent.h>
 
 class QAction;
 class QLabel;
@@ -10,40 +11,53 @@ class QMenu;
 class QScrollArea;
 class QScrollBar;
 
-class ImageViewer : public QWidget
+class ImageViewer: public QWidget
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    ImageViewer();
-    bool loadFile(const QString &);
+	ImageViewer();
+
+	void initViewer(QScrollArea* _scrollArea);
+
+	bool loadFile(const QString &);
+
+	bool hasImage( const QString& _path);
+
+	void clear();
+
+	bool eventFilter(QObject* /*obj*/, QEvent* evt)
+	{
+		if (evt->type() == QEvent::Wheel)
+		{
+			// ignore the event (this effectively 
+			// makes it "skip" one object)
+			evt->ignore();
+		}
+		// return false to continue event propagation
+		// for all events
+		return false;
+	}
+
+protected:
+	void wheelEvent(QWheelEvent* event);
 
 private slots:
-    void zoomIn();
-    void zoomOut();
-    void normalSize();
-    void fitToWindow();
+	void zoomIn();
+	void zoomOut();
+	void normalSize();
 
 private:
-    void createActions();
-    void createMenus();
-    void updateActions();
-    void setImage(const QImage &newImage);
-    void scaleImage(double factor);
-    void adjustScrollBar(QScrollBar *scrollBar, double factor);
 
-    QImage image;
-    QLabel *imageLabel;
-    QScrollArea *scrollArea;
-    double scaleFactor;
+	void setImage(const QImage &newImage);
+	void scaleImage(double factor);
+	void adjustScrollBar(QScrollBar *scrollBar, double factor);
 
-    QAction *saveAsAct;
-    QAction *printAct;
-    QAction *copyAct;
-    QAction *zoomInAct;
-    QAction *zoomOutAct;
-    QAction *normalSizeAct;
-    QAction *fitToWindowAct;
+	QString imageFile;
+	QImage image;
+	QLabel *imageLabel;
+	QScrollArea *scrollArea;
+	double scaleFactor;
 };
 
 #endif

@@ -2,14 +2,8 @@
 #include "sources/tasks/task_properties.hpp"
 
 #include "sources/tasks/task_implementations/custom/custom_image_processing_task.hpp"
-#include "sources/tasks/task_implementations/custom/custom_box_filter_task.hpp"
-#include "sources/tasks/task_implementations/custom/custom_sobel_filter_task.hpp"
-#include "sources/tasks/task_implementations/opencv/opencv_filtering_task.hpp"
 #include "sources/tasks/task_implementations/opencv/opencv_image_processing_task.hpp"
-#include "sources/tasks/task_implementations/opencv_cuda/opencv_cuda_filtering_task.hpp"
 #include "sources/tasks/task_implementations/opencv_cuda/opencv_cuda_image_processing_task.hpp"
-#include "sources/tasks/task_implementations/openmp/openmp_box_filter_task.hpp"
-#include "sources/tasks/task_implementations/openmp/openmp_sobel_filter_task.hpp"
 #include "sources/tasks/task_implementations/openmp/openmp_image_processing_task.hpp"
 #include "sources/tasks/task_implementations/custom_cuda/custom_cuda_task.hpp"
 
@@ -47,49 +41,24 @@ namespace Tasks {
 			break;
 		}
 
-		case TaskType::BoxFilter:
+		case TaskType::Blur:
 		{
 			switch (_implementationType)
 			{
 			case TaskImplementationType::Custom:
-				return createTaskInternal< CustomBoxFilterTask >();
+				return createTaskInternal< CustomBlurTask >();
 
 			case TaskImplementationType::Custom_CUDA:
-				return createTaskInternal< BoxFilterCUDA >();
+				return createTaskInternal< BlurCUDA >();
 
 			case TaskImplementationType::OpenCV:
-				return createTaskInternal< OpenCV_BoxFilter_Task >();
+				return createTaskInternal< OpenCV_Blur_Task >();
 
 			case TaskImplementationType::OpenCV_CUDA:
-				return createTaskInternal< OpenCV_CUDA_BoxFilter_Task >();
+				return createTaskInternal< OpenCV_CUDA_Blur_Task >();
 
 			case TaskImplementationType::OpenMP:
-				return createTaskInternal< OpenMPBoxFilterTask >();
-
-			default:
-				throw std::invalid_argument("Invalid implementation type!");
-			}
-			break;
-		}
-
-		case TaskType::SobelFilter:
-		{
-			switch (_implementationType)
-			{
-			case TaskImplementationType::Custom:
-				return createTaskInternal< CustomSobelFilterTask >();
-
-			case TaskImplementationType::Custom_CUDA:
-				return createTaskInternal< SobelFilterCUDA >();
-
-			case TaskImplementationType::OpenCV:
-				return createTaskInternal< OpenCV_SobelFilter_Task >();
-
-			case TaskImplementationType::OpenCV_CUDA:
-				return createTaskInternal< OpenCV_CUDA_SobelFilter_Task >();
-
-			case TaskImplementationType::OpenMP:
-				return createTaskInternal< OpenMPSobelFilterTask >();
+				return createTaskInternal< OpenMPBlurTask >();
 
 			default:
 				throw std::invalid_argument("Invalid implementation type!");

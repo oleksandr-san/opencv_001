@@ -3,13 +3,14 @@
 
 #include "ih/tasks/itask.hpp"
 #include "sources/tasks/task_context.hpp"
+#include "sources/tasks/task_implementations/base/object_data.hpp"
 
-#include <opencv2/core.hpp>
 
 namespace Tasks {
 
 	class BaseTask
-		: public ITask
+		:	public ITask
+		,	std::enable_shared_from_this< BaseTask >
 	{
 
 	public:
@@ -20,17 +21,17 @@ namespace Tasks {
 				Objects::IProcessingObject::List _objects
 			) override;
 
-		virtual ITaskProperties& getProperties() override;
+		virtual ITaskProperties& getProperties() const override;
+
+		virtual ITaskProperties& takeProperties() override;
 
 	protected:
 
-		virtual ITaskResult::Ptr getResult();
+		virtual void runInternal( ObjectData& _data ) = 0;
 
-		virtual void runInternal( TaskContext& _context ) = 0;
+		virtual void prepareObjectData( ObjectData& _data, TaskContext& _context );
 
-		virtual void loadObject( cv::Mat& _target, TaskContext& _context );
-
-		virtual void saveObject( cv::Mat& _source, TaskContext& _context );
+		virtual void saveObjectData( ObjectData& _data, TaskContext& _context );
 
 	private:
 

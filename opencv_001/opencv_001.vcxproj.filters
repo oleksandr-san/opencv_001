@@ -72,9 +72,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Файлы исходного кода</Filter>
-    </ClCompile>
     <ClCompile Include="sources\objects\processing_object.cpp">
       <Filter>Файлы исходного кода\Sources\Objects</Filter>
     </ClCompile>
@@ -93,17 +90,11 @@
     <ClCompile Include="sources\tasks\task_properties.cpp">
       <Filter>Файлы исходного кода\Sources\Tasks\Task Properties</Filter>
     </ClCompile>
-    <ClCompile Include="sources\tasks\task_implementations\opencv_cuda\opencv_cuda_filtering_task.cpp">
-      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenCV_CUDA</Filter>
-    </ClCompile>
     <ClCompile Include="sources\tasks\task_implementations\opencv_cuda\opencv_cuda_image_processing_task.cpp">
       <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenCV_CUDA</Filter>
     </ClCompile>
     <ClCompile Include="sources\tasks\task_implementations\base\base_task.cpp">
       <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="sources\tasks\task_implementations\opencv\opencv_filtering_task.cpp">
-      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenCV</Filter>
     </ClCompile>
     <ClCompile Include="sources\tasks\task_implementations\opencv\opencv_image_processing_task.cpp">
       <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenCV</Filter>
@@ -111,19 +102,7 @@
     <ClCompile Include="sources\tasks\task_implementations\custom\custom_image_processing_task.cpp">
       <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\Custom</Filter>
     </ClCompile>
-    <ClCompile Include="sources\tasks\task_implementations\custom\custom_box_filter_task.cpp">
-      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\Custom</Filter>
-    </ClCompile>
-    <ClCompile Include="sources\tasks\task_implementations\custom\custom_sobel_filter_task.cpp">
-      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\Custom</Filter>
-    </ClCompile>
-    <ClCompile Include="sources\tasks\task_implementations\openmp\openmp_box_filter_task.cpp">
-      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenMP</Filter>
-    </ClCompile>
     <ClCompile Include="sources\tasks\task_implementations\openmp\openmp_image_processing_task.cpp">
-      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenMP</Filter>
-    </ClCompile>
-    <ClCompile Include="sources\tasks\task_implementations\openmp\openmp_sobel_filter_task.cpp">
       <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenMP</Filter>
     </ClCompile>
     <ClCompile Include="sources\tasks\task_implementations\custom_cuda\custom_cuda_task.cpp">
@@ -155,9 +134,6 @@
     <ClInclude Include="ih\tasks\itask.hpp">
       <Filter>Файлы исходного кода\Include Headers\Tasks</Filter>
     </ClInclude>
-    <ClInclude Include="ih\tasks\task_kind.hpp">
-      <Filter>Файлы исходного кода\Include Headers\Tasks</Filter>
-    </ClInclude>
     <ClInclude Include="ih\tasks\task_implementation_type.hpp">
       <Filter>Файлы исходного кода\Include Headers\Tasks</Filter>
     </ClInclude>
@@ -185,9 +161,6 @@
     <ClInclude Include="sources\tasks\task_implementations\opencv_cuda\base_opencv_cuda_task.hpp">
       <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenCV_CUDA</Filter>
     </ClInclude>
-    <ClInclude Include="sources\tasks\task_implementations\opencv_cuda\opencv_cuda_filtering_task.hpp">
-      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenCV_CUDA</Filter>
-    </ClInclude>
     <ClInclude Include="sources\tasks\task_implementations\opencv_cuda\opencv_cuda_image_processing_task.hpp">
       <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenCV_CUDA</Filter>
     </ClInclude>
@@ -197,35 +170,26 @@
     <ClInclude Include="sources\tasks\task_implementations\base\base_task.hpp">
       <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\Base</Filter>
     </ClInclude>
-    <ClInclude Include="sources\tasks\task_implementations\opencv\base_opencv_task.hpp">
-      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenCV</Filter>
-    </ClInclude>
-    <ClInclude Include="sources\tasks\task_implementations\opencv\opencv_filtering_task.hpp">
-      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenCV</Filter>
-    </ClInclude>
     <ClInclude Include="sources\tasks\task_implementations\opencv\opencv_image_processing_task.hpp">
       <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenCV</Filter>
     </ClInclude>
     <ClInclude Include="sources\tasks\task_implementations\custom\custom_image_processing_task.hpp">
       <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\Custom</Filter>
     </ClInclude>
-    <ClInclude Include="sources\tasks\task_implementations\custom\custom_box_filter_task.hpp">
-      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\Custom</Filter>
-    </ClInclude>
-    <ClInclude Include="sources\tasks\task_implementations\custom\custom_sobel_filter_task.hpp">
-      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\Custom</Filter>
-    </ClInclude>
-    <ClInclude Include="sources\tasks\task_implementations\openmp\openmp_box_filter_task.hpp">
-      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenMP</Filter>
-    </ClInclude>
     <ClInclude Include="sources\tasks\task_implementations\openmp\openmp_image_processing_task.hpp">
-      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenMP</Filter>
-    </ClInclude>
-    <ClInclude Include="sources\tasks\task_implementations\openmp\openmp_sobel_filter_task.hpp">
       <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\OpenMP</Filter>
     </ClInclude>
     <ClInclude Include="sources\tasks\task_implementations\custom_cuda\custom_cuda_task.hpp">
       <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\Custom_CUDA</Filter>
+    </ClInclude>
+    <ClInclude Include="ih\tasks\task_type.hpp">
+      <Filter>Файлы исходного кода\Include Headers\Tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\tasks\task_implementations\base\object_data.hpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\tasks\task_implementations\base\task_utils.hpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\Base</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

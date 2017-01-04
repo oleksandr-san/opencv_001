@@ -8,16 +8,6 @@
 
 namespace Tasks {
 
-	struct TaskProperty
-	{
-		enum Enum
-		{
-				RepeatsCount = 0
-			,	OutputDirectory
-			,	KernelSize
-		};
-	};
-
 	class ITaskProperties : boost::noncopyable
 	{
 
@@ -27,24 +17,21 @@ namespace Tasks {
 
 	public:
 
-		virtual boost::optional< int > getIntProperty(
-				TaskProperty::Enum _property
-			) const = 0;
+		virtual int getRepeatsCount() const = 0;
+		virtual const std::string& getOutputDirectory() const = 0;
+		virtual int getBlurringKernelSize() const = 0;
+		virtual double getSigmaX() const = 0;
+		virtual bool getModifyOriginal() const = 0;
+		virtual bool getOptimizeBlockProcessing() const = 0;
 
-		virtual boost::optional< std::string > getStringProperty(
-				TaskProperty::Enum _property
-			) const = 0;
+		virtual void setRepeatsCount(int _value) = 0;
+		virtual void setOutputDirectory(const std::string& _value) = 0;
+		virtual void setBlurringKernelSize(int _value) = 0;
+		virtual void setSigmaX(double _value) = 0;
+		virtual void setModifyOriginal(bool _value) = 0;
+		virtual void setOptimizeBlockProcessing(bool _value) = 0;
 
-		virtual boost::optional< Utils::Path > getPathProperty(
-				TaskProperty::Enum _property
-			) const = 0;
-
-		virtual void setProperty( 
-				TaskProperty::Enum _property
-			,	const boost::any& _value
-			) = 0;
-
-		virtual void resetProperties() = 0;
+		virtual void reset() = 0;
 	};
 }
 

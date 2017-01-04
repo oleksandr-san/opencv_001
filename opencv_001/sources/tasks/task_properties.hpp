@@ -13,35 +13,32 @@ namespace Tasks {
 
 	public:
 
-		virtual boost::optional< int > getIntProperty(
-				TaskProperty::Enum _property
-			) const override;
+		TaskProperties();
 
-		virtual boost::optional< std::string > getStringProperty(
-				TaskProperty::Enum _property
-			) const override;
+		virtual int getRepeatsCount() const;
+		virtual const std::string& getOutputDirectory() const;
+		virtual int getBlurringKernelSize() const;
+		virtual double getSigmaX() const;
+		virtual bool getModifyOriginal() const;
+		virtual bool getOptimizeBlockProcessing() const;
 
-		virtual boost::optional< Utils::Path > getPathProperty(
-				TaskProperty::Enum _property
-			) const override;
+		virtual void setRepeatsCount(int _value);
+		virtual void setOutputDirectory(const std::string& _value);
+		virtual void setBlurringKernelSize(int _value);
+		virtual void setSigmaX(double _value);
+		virtual void setModifyOriginal(bool _value);
+		virtual void setOptimizeBlockProcessing(bool _value);
 
-		virtual void setProperty( 
-				TaskProperty::Enum _property
-			,	const boost::any& _value
-			) override;
-
-		virtual void resetProperties() override;
-
-	private:
-
-		template < typename _ValueType >
-		boost::optional< _ValueType > getTypedProperty(
-				TaskProperty::Enum _property
-			) const;
+		virtual void reset() override;
 
 	private:
 
-		std::unordered_map< TaskProperty::Enum, boost::any > m_values;
+		int m_repeatsCount;
+		std::string m_outputDirectory;
+		int m_blurringKernelSize;
+		double m_sigmaX;
+		bool m_modifyOriginal;
+		bool m_optimizeBlockProcessing;
 
 	};
 

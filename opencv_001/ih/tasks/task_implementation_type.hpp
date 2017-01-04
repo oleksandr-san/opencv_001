@@ -1,6 +1,10 @@
 #ifndef __TASK_IMPLEMENTATION_TYPE_HPP__
 #define __TASK_IMPLEMENTATION_TYPE_HPP__
 
+#include "ih/exceptions/exceptions.hpp"
+
+#include <boost/lexical_cast.hpp>
+
 namespace Tasks {
 
 	struct TaskImplementationType
@@ -55,13 +59,40 @@ namespace Tasks {
 				return "opencv";
 
 			case OpenCV_CUDA:
-				return "ppencv_cuda";
+				return "opencv_cuda";
 
 			case OpenMP:
 				return "openmp";
 
 			default:
 				return nullptr;
+			}
+		}
+
+		static Enum fromInt( int _value )
+		{
+			switch( _value )
+			{
+			case 0:
+				return Custom;
+
+			case 1:
+				return Custom_CUDA;
+
+			case 2:
+				return OpenCV;
+
+			case 3:
+				return OpenCV_CUDA;
+
+			case 4:
+				return OpenMP;
+
+			default:
+				throw Exceptions::InvalidParameterException(
+					"Task Type",
+					boost::lexical_cast< std::string >( _value )
+				);
 			}
 		}
 	};

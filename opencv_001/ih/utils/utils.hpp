@@ -6,9 +6,11 @@
 #include <filesystem>
 #include <boost/noncopyable.hpp>
 
+namespace Filesystem = std::experimental::filesystem;
+
 namespace Utils {
 
-	typedef std::experimental::filesystem::path Path;
+	typedef Filesystem::path Path;
 
 	typedef std::chrono::high_resolution_clock::time_point TimePoint;
 }

@@ -2,28 +2,28 @@
 
 namespace Tasks {
 
-	TaskResult::TaskResult()
+
+
+	TaskResult::TaskResult( std::shared_ptr< ITask > _task)
+		:	m_task( _task )
 	{
 	}
 
-	const Utils::TimePoint& TaskResult::getStartTime() const
+	const ITaskResult::ObjectResultList&
+	TaskResult::getObjectResults() const
 	{
-		return m_startTime;
+		return m_results;
 	}
 
-	const Utils::TimePoint& TaskResult::getEndTime() const
+	const ITask& TaskResult::getTask() const
 	{
-		return m_endTime;
+		return *m_task;
 	}
 
-	void TaskResult::setStartTime( const Utils::TimePoint& _timePoint )
+	TaskResult::ObjectResultList&
+	TaskResult::takeObjectResults()
 	{
-		m_startTime = _timePoint;
-	}
-
-	void TaskResult::setEndTime( const Utils::TimePoint& _timePoint )
-	{
-		m_endTime = _timePoint;
+		return m_results;
 	}
 
 }

@@ -25,8 +25,36 @@ namespace Tasks {
 
 	protected:
 
-		virtual void runInternal( TaskContext& _context ) override;
+		virtual void runInternal( ObjectData& _data ) override;
 	};
+
+
+	class OpenMPBlurTask
+		:	public BaseTypedTask<
+					TaskType::Blur,
+					TaskImplementationType::OpenMP
+				>
+	{
+
+		typedef
+			BaseTypedTask<
+				TaskType::Blur,
+				TaskImplementationType::OpenMP
+			>
+			BaseClass;
+
+	public:
+
+		OpenMPBlurTask( ITaskProperties::Ptr _properties );
+
+	protected:
+
+		virtual void runInternal( ObjectData& _data ) override;
+
+		virtual void prepareObjectData( ObjectData& _data, TaskContext& _context ) override;
+
+	};
+
 }
 
 #endif

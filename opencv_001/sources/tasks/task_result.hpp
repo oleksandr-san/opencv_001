@@ -11,19 +11,21 @@ namespace Tasks {
 
 	public:
 
-		TaskResult();
+		TaskResult( std::shared_ptr< ITask > _task );
 
-		virtual const Utils::TimePoint& getStartTime() const override;
+		virtual const ObjectResultList&	getObjectResults() const override;
 
-		virtual const Utils::TimePoint& getEndTime() const override;
+		virtual const ITask& getTask() const override;
 
-		virtual void setStartTime( const Utils::TimePoint& _timePoint ) override;
+	public:
 
-		virtual void setEndTime( const Utils::TimePoint& _timePoint ) override;
+		ObjectResultList& takeObjectResults();
 
 	private:
 
-		Utils::TimePoint m_startTime, m_endTime;
+		ITaskResult::ObjectResultList m_results;
+
+		std::shared_ptr< ITask > m_task;
 
 	};
 

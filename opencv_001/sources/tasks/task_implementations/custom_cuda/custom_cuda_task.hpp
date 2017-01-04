@@ -9,13 +9,13 @@ namespace Tasks {
 	class CustomCUDATask
 		:	public BaseTypedTask<
 				_Type,
-				TaskImplementationType::Custom
+				TaskImplementationType::Custom_CUDA
 			>
 	{
 		typedef
 			BaseTypedTask<
 				_Type,
-				TaskImplementationType::Custom
+				TaskImplementationType::Custom_CUDA
 			>
 			BaseClass;
 
@@ -25,12 +25,16 @@ namespace Tasks {
 
 	protected:
 
-		virtual void runInternal( TaskContext& _context ) override;
+		virtual void runInternal( ObjectData& _data ) override;
+
+		virtual void prepareObjectData( ObjectData& _data, TaskContext& _context ) override;
+
+		virtual void saveObjectData( ObjectData& _data, TaskContext& _context ) override;
+
 	};
 
 	typedef CustomCUDATask< TaskType::Grayscale > GrayscaleCUDA;
-	typedef CustomCUDATask< TaskType::BoxFilter > BoxFilterCUDA;
-	typedef CustomCUDATask< TaskType::SobelFilter > SobelFilterCUDA;
+	typedef CustomCUDATask< TaskType::Blur > BlurCUDA;
 
 }
 

@@ -2,48 +2,81 @@
 
 namespace Tasks {
 
-	boost::optional< int > 
-	TaskProperties::getIntProperty(TaskProperty::Enum _property) const
+
+
+	TaskProperties::TaskProperties()
 	{
-		return getTypedProperty< int >( _property );
+		reset();
 	}
 
-	boost::optional< std::string >
-	TaskProperties::getStringProperty(TaskProperty::Enum _property) const
+	int TaskProperties::getRepeatsCount() const
 	{
-		return getTypedProperty< std::string >( _property );
+		return m_repeatsCount;
 	}
 
-	boost::optional< Utils::Path >
-	TaskProperties::getPathProperty(TaskProperty::Enum _property) const
+	const std::string & TaskProperties::getOutputDirectory() const
 	{
-		return getTypedProperty< Utils::Path >( _property );
+		return m_outputDirectory;
 	}
 
-	void TaskProperties::setProperty(
-			TaskProperty::Enum _property
-		,	const boost::any & _value
-		)
+	int TaskProperties::getBlurringKernelSize() const
 	{
-		m_values[ _property ] = _value;
+		return m_blurringKernelSize;
 	}
 
-	void TaskProperties::resetProperties()
+	double TaskProperties::getSigmaX() const
 	{
-		m_values.clear();
+		return m_sigmaX;
 	}
 
-	template< typename _ValueType >
-	boost::optional< _ValueType >
-	TaskProperties::getTypedProperty( TaskProperty::Enum _property ) const
+	bool TaskProperties::getModifyOriginal() const
 	{
-		auto it = m_values.find( _property );
-		if ( it != m_values.end() )
-		{
-			if ( auto value = boost::any_cast< _ValueType >( &it->second ) )
-				return boost::optional< _ValueType >( *value );
-		}
-		return boost::optional< _ValueType >();
+		return m_modifyOriginal;
+	}
+
+	bool TaskProperties::getOptimizeBlockProcessing() const
+	{
+		return m_optimizeBlockProcessing;
+	}
+
+	void TaskProperties::setRepeatsCount(int _value)
+	{
+		m_repeatsCount = _value;
+	}
+
+	void TaskProperties::setOutputDirectory(const std::string & _value)
+	{
+		m_outputDirectory = _value;
+	}
+
+	void TaskProperties::setBlurringKernelSize(int _value)
+	{
+		m_blurringKernelSize = _value;
+	}
+
+	void TaskProperties::setSigmaX(double _value)
+	{
+		m_sigmaX = _value;
+	}
+
+	void TaskProperties::setModifyOriginal(bool _value)
+	{
+		m_modifyOriginal = _value;
+	}
+
+	void TaskProperties::setOptimizeBlockProcessing(bool _value)
+	{
+		m_optimizeBlockProcessing = _value;
+	}
+
+	void TaskProperties::reset()
+	{
+		m_repeatsCount = 1;
+		m_blurringKernelSize = 1;
+		m_sigmaX = 1.0;
+		m_modifyOriginal = false;
+		m_outputDirectory.clear();
+		m_optimizeBlockProcessing = false;
 	}
 
 }

@@ -26,26 +26,26 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -71,19 +71,19 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(ProjectPath)\..\;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectPath)\..\;$(ProjectPath)\..\..;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(ProjectPath)\..\;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectPath)\..\;$(ProjectPath)\..\..;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(ProjectPath)\..\;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectPath)\..\;$(ProjectPath)\..\..;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(ProjectPath)\..\;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectPath)\..\;$(ProjectPath)\..\..;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -92,7 +92,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(OPENCV_DIR)\build\install\include;$(BOOST_ROOT);$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectPath)\..;$(OPENCV_DIR)\build\install\include;$(ProjectPath)\..\..;$(BOOST_ROOT);$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -108,7 +108,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(OPENCV_DIR)\build\install\include;$(BOOST_ROOT);$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(CUDA_PATH)\include;$(ProjectPath)\..;$(OPENCV_DIR)\build\install\include;$(ProjectPath)\..\..;$(BOOST_ROOT);$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -126,7 +126,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(OPENCV_DIR)\build\install\include;$(BOOST_ROOT);$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectPath)\..;$(OPENCV_DIR)\build\install\include;$(ProjectPath)\..\..;$(BOOST_ROOT);$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OpenMPSupport>true</OpenMPSupport>
     </ClCompile>
     <Link>
@@ -147,7 +147,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(OPENCV_DIR)\build\install\include;$(BOOST_ROOT);$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BOOST_ROOT);$(ProjectPath);$(ProjectPath)\..;$(ProjectPath)\..\..;$(OPENCV_DIR)\build\install\include;$(CUDA_PATH)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OpenMPSupport>true</OpenMPSupport>
     </ClCompile>
     <Link>
@@ -160,22 +160,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="sources\accessor\accessor.cpp" />
     <ClCompile Include="sources\objects\objects_controller.cpp" />
     <ClCompile Include="sources\objects\processing_object.cpp" />
     <ClCompile Include="sources\tasks\task_implementations\base\base_task.cpp" />
-    <ClCompile Include="sources\tasks\task_implementations\custom\custom_box_filter_task.cpp" />
     <ClCompile Include="sources\tasks\task_implementations\custom\custom_image_processing_task.cpp" />
-    <ClCompile Include="sources\tasks\task_implementations\custom\custom_sobel_filter_task.cpp" />
     <ClCompile Include="sources\tasks\task_implementations\custom_cuda\custom_cuda_task.cpp" />
-    <ClCompile Include="sources\tasks\task_implementations\opencv\opencv_filtering_task.cpp" />
     <ClCompile Include="sources\tasks\task_implementations\opencv\opencv_image_processing_task.cpp" />
-    <ClCompile Include="sources\tasks\task_implementations\opencv_cuda\opencv_cuda_filtering_task.cpp" />
     <ClCompile Include="sources\tasks\task_implementations\opencv_cuda\opencv_cuda_image_processing_task.cpp" />
-    <ClCompile Include="sources\tasks\task_implementations\openmp\openmp_box_filter_task.cpp" />
     <ClCompile Include="sources\tasks\task_implementations\openmp\openmp_image_processing_task.cpp" />
-    <ClCompile Include="sources\tasks\task_implementations\openmp\openmp_sobel_filter_task.cpp" />
     <ClCompile Include="sources\tasks\task_manager.cpp" />
     <ClCompile Include="sources\tasks\task_properties.cpp" />
     <ClCompile Include="sources\tasks\task_result.cpp" />
@@ -190,26 +183,21 @@
     <ClInclude Include="ih\tasks\itask_properties.hpp" />
     <ClInclude Include="ih\tasks\itask_result.hpp" />
     <ClInclude Include="ih\tasks\task_implementation_type.hpp" />
-    <ClInclude Include="ih\tasks\task_kind.hpp" />
+    <ClInclude Include="ih\tasks\task_type.hpp" />
     <ClInclude Include="ih\utils\utils.hpp" />
     <ClInclude Include="sources\objects\objects_controller.hpp" />
     <ClInclude Include="sources\objects\processing_object.hpp" />
     <ClInclude Include="sources\tasks\task_context.hpp" />
     <ClInclude Include="sources\tasks\task_implementations\base\base_task.hpp" />
     <ClInclude Include="sources\tasks\task_implementations\base\base_typed_task.hpp" />
-    <ClInclude Include="sources\tasks\task_implementations\custom\custom_box_filter_task.hpp" />
+    <ClInclude Include="sources\tasks\task_implementations\base\object_data.hpp" />
+    <ClInclude Include="sources\tasks\task_implementations\base\task_utils.hpp" />
     <ClInclude Include="sources\tasks\task_implementations\custom\custom_image_processing_task.hpp" />
-    <ClInclude Include="sources\tasks\task_implementations\custom\custom_sobel_filter_task.hpp" />
     <ClInclude Include="sources\tasks\task_implementations\custom_cuda\custom_cuda_task.hpp" />
-    <ClInclude Include="sources\tasks\task_implementations\opencv\base_opencv_task.hpp" />
-    <ClInclude Include="sources\tasks\task_implementations\opencv\opencv_filtering_task.hpp" />
     <ClInclude Include="sources\tasks\task_implementations\opencv\opencv_image_processing_task.hpp" />
     <ClInclude Include="sources\tasks\task_implementations\opencv_cuda\base_opencv_cuda_task.hpp" />
-    <ClInclude Include="sources\tasks\task_implementations\opencv_cuda\opencv_cuda_filtering_task.hpp" />
     <ClInclude Include="sources\tasks\task_implementations\opencv_cuda\opencv_cuda_image_processing_task.hpp" />
-    <ClInclude Include="sources\tasks\task_implementations\openmp\openmp_box_filter_task.hpp" />
     <ClInclude Include="sources\tasks\task_implementations\openmp\openmp_image_processing_task.hpp" />
-    <ClInclude Include="sources\tasks\task_implementations\openmp\openmp_sobel_filter_task.hpp" />
     <ClInclude Include="sources\tasks\task_manager.hpp" />
     <ClInclude Include="sources\tasks\task_properties.hpp" />
     <ClInclude Include="sources\tasks\task_result.hpp" />

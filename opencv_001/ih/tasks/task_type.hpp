@@ -1,6 +1,10 @@
 #ifndef __TASK_TYPE_HPP__
 #define __TASK_TYPE_HPP__
 
+#include "ih/exceptions/exceptions.hpp"
+
+#include <boost/lexical_cast.hpp>
+
 namespace Tasks {
 
 	struct TaskType
@@ -8,8 +12,7 @@ namespace Tasks {
 		enum Enum
 		{
 				Grayscale	= 0
-			,	BoxFilter
-			,	SobelFilter
+			,	Blur
 
 			,	Last
 			,	First = Grayscale
@@ -22,11 +25,8 @@ namespace Tasks {
 			case Grayscale:
 				return "Grayscale";
 
-			case BoxFilter:
-				return "Box Filter";
-
-			case SobelFilter:
-				return "Sobel Filter";
+			case Blur:
+				return "Blur";
 
 			default:
 				return nullptr;
@@ -40,14 +40,29 @@ namespace Tasks {
 			case Grayscale:
 				return "grayscale";
 
-			case BoxFilter:
-				return "boxfilter";
-
-			case SobelFilter:
-				return "sobelfilter";
+			case Blur:
+				return "blur";
 
 			default:
 				return nullptr;
+			}
+		}
+
+		static Enum fromInt( int _value )
+		{
+			switch( _value )
+			{
+			case 0:
+				return Grayscale;
+
+			case 1:
+				return Blur;
+
+			default:
+				throw Exceptions::InvalidParameterException(
+					"Task Type",
+					boost::lexical_cast< std::string >( _value )
+				);
 			}
 		}
 	};
