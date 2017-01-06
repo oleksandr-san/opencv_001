@@ -13,6 +13,18 @@ void ExecuteGrayscaleCUDAOptimized(
 	cv::cuda::GpuMat& _target
 );
 
+void ExecuteThresholdSimpleCUDA(
+	cv::cuda::GpuMat& _source,
+	cv::cuda::GpuMat& _target,
+	unsigned char _threshold
+);
+
+void ExecuteThresholdBlocksCUDA(
+	cv::cuda::GpuMat& _source,
+	cv::cuda::GpuMat& _target,
+	unsigned char _threshold
+);
+
 void ExecuteGaussianBlur(
 	cv::cuda::GpuMat& _source,
 	cv::cuda::GpuMat& _target,

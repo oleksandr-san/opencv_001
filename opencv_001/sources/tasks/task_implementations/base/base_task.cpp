@@ -26,7 +26,7 @@ namespace Tasks {
 			objectResults.push_back(
 					ITaskResult::ObjectResult(
 							object
-						,	std::vector< ITaskResult::TimeResult >(
+						,	std::vector< ITaskResult::IterationResult >(
 								static_cast< size_t >( repeatsCount )
 							)
 					)
@@ -42,21 +42,24 @@ namespace Tasks {
 			for ( int j = 0; j < objectsCount; ++j )
 			{
 				context.setObject( _objects[ j ] );
-				ITaskResult::TimeResult& timeResult = objectResults[ j ].second[ i ];
+				ITaskResult::IterationResult& iterationResult
+					= objectResults[ j ].second[ i ];
+
+				context.setCurrentIterationResult( iterationResult );
 
 				ObjectData data;
 
-				timeResult.m_loadTime.first = Utils::TimePoint::clock::now();
+				iterationResult.m_loadTime.first = Utils::TimePoint::clock::now();
 				prepareObjectData( data, context );
-				timeResult.m_loadTime.second = Utils::TimePoint::clock::now();
+				iterationResult.m_loadTime.second = Utils::TimePoint::clock::now();
 
-				timeResult.m_processTime.first = Utils::TimePoint::clock::now();
+				iterationResult.m_processTime.first = Utils::TimePoint::clock::now();
 				runInternal( data );
-				timeResult.m_processTime.second = Utils::TimePoint::clock::now();
+				iterationResult.m_processTime.second = Utils::TimePoint::clock::now();
 
-				timeResult.m_saveTime.first = Utils::TimePoint::clock::now();
+				iterationResult.m_saveTime.first = Utils::TimePoint::clock::now();
 				saveObjectData( data, context );
-				timeResult.m_saveTime.second = Utils::TimePoint::clock::now();
+				iterationResult.m_saveTime.second = Utils::TimePoint::clock::now();
 			}
 		}
 
@@ -120,6 +123,9 @@ namespace Tasks {
 				objectPath.extension().string()
 				;
 		}
+
+		if ( auto iterationResult = _context.getIterationResul() )
+			iterationResult->m_objectPath = outputPath;
 
 		cv::imwrite( outputPath, _data.m_target );
 	}

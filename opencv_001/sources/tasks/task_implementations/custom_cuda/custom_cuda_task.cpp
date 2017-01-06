@@ -35,6 +35,35 @@ namespace Tasks {
 
 	template <>
 	void
+	CustomCUDATask< TaskType::Binarization >::runInternal( ObjectData& _data )
+	{
+		unsigned char threshold =
+			static_cast< unsigned char >(
+					Utils::calculateThresholdValue( _data )
+				);
+
+
+
+		if ( getProperties().getOptimizeBlockProcessing() )
+		{
+			ExecuteThresholdBlocksCUDA(
+				_data.m_deviceSource,
+				_data.m_deviceTarget,
+				threshold
+			);
+		}
+		else
+		{
+			ExecuteThresholdSimpleCUDA(
+				_data.m_deviceSource,
+				_data.m_deviceTarget,
+				threshold
+			);
+		}
+	}
+
+	template <>
+	void
 	CustomCUDATask< TaskType::Blur >::runInternal( ObjectData& _data )
 	{
 		ExecuteGaussianBlur(
@@ -72,7 +101,7 @@ namespace Tasks {
 				_data.m_deviceSource.type()
 			);
 
-		Utils::FilterCreator::createBlurFilter(
+		Utils::createBlurFilter(
 			_data,
 			getProperties().getBlurringKernelSize(),
 			getProperties().getSigmaX()
@@ -89,5 +118,6 @@ namespace Tasks {
 	}
 
 	template class CustomCUDATask< TaskType::Grayscale >;
+	template class CustomCUDATask< TaskType::Binarization >;
 	template class CustomCUDATask< TaskType::Blur >;
 }

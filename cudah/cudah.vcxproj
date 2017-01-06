@@ -160,6 +160,7 @@ copy "$(CudaToolkitBinDir)\cudart*.dll" "$(OutDir)"</Command>
     </CudaCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <CudaCompile Include="threshold.cu" />
     <CudaCompile Include="blurring.cu" />
     <CudaCompile Include="grayscale.cu" />
   </ItemGroup>

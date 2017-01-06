@@ -20,6 +20,11 @@ namespace Tasks {
 			return m_object;
 		}
 
+		boost::optional< ITaskResult::IterationResult& > getIterationResul()
+		{
+			return m_currentIterationResult;
+		}
+
 		void setIteration( int _iteration )
 		{
 			m_iteration = _iteration;
@@ -30,10 +35,17 @@ namespace Tasks {
 			m_object = _object;
 		}
 
+		void setCurrentIterationResult( ITaskResult::IterationResult& _result )
+		{
+			m_currentIterationResult = _result;
+		}
+
 	private:
 
 		Objects::IProcessingObject::Ptr m_object;
 		int m_iteration;
+
+		boost::optional< ITaskResult::IterationResult& > m_currentIterationResult;
 
 	};
 

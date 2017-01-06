@@ -34,6 +34,7 @@ namespace Tasks {
 	};
 
 	typedef CustomCUDATask< TaskType::Grayscale > GrayscaleCUDA;
+	typedef CustomCUDATask< TaskType::Binarization > BinarizationCUDA;
 	typedef CustomCUDATask< TaskType::Blur > BlurCUDA;
 
 }

@@ -164,6 +164,7 @@
     <ClCompile Include="sources\objects\objects_controller.cpp" />
     <ClCompile Include="sources\objects\processing_object.cpp" />
     <ClCompile Include="sources\tasks\task_implementations\base\base_task.cpp" />
+    <ClCompile Include="sources\tasks\task_implementations\base\task_utils.cpp" />
     <ClCompile Include="sources\tasks\task_implementations\custom\custom_image_processing_task.cpp" />
     <ClCompile Include="sources\tasks\task_implementations\custom_cuda\custom_cuda_task.cpp" />
     <ClCompile Include="sources\tasks\task_implementations\opencv\opencv_image_processing_task.cpp" />

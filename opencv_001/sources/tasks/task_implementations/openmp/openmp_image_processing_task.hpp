@@ -29,6 +29,31 @@ namespace Tasks {
 	};
 
 
+	class OpenMPBinarizationTask
+		:	public BaseTypedTask<
+					TaskType::Binarization,
+					TaskImplementationType::OpenMP
+				>
+	{
+
+		typedef
+			BaseTypedTask<
+				TaskType::Binarization,
+				TaskImplementationType::OpenMP
+			>
+			BaseClass;
+
+	public:
+
+		OpenMPBinarizationTask( ITaskProperties::Ptr _properties );
+
+	protected:
+
+		virtual void runInternal( ObjectData& _data ) override;
+
+	};
+
+
 	class OpenMPBlurTask
 		:	public BaseTypedTask<
 					TaskType::Blur,

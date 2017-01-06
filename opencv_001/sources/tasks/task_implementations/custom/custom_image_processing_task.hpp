@@ -28,6 +28,32 @@ namespace Tasks {
 		virtual void runInternal( ObjectData& _data ) override;
 	};
 
+
+	class CustomBinarizationTask
+		:	public BaseTypedTask<
+					TaskType::Binarization,
+					TaskImplementationType::Custom
+				>
+	{
+
+		typedef
+			BaseTypedTask<
+				TaskType::Binarization,
+				TaskImplementationType::Custom
+			>
+			BaseClass;
+
+	public:
+
+		CustomBinarizationTask( ITaskProperties::Ptr _properties );
+
+	protected:
+
+		virtual void runInternal( ObjectData& _data ) override;
+
+	};
+
+
 	class CustomBlurTask
 		:	public BaseTypedTask<
 					TaskType::Blur,

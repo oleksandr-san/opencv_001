@@ -1,4 +1,5 @@
 ﻿#include "sources/tasks/task_implementations/openmp/openmp_image_processing_task.hpp"
+#include "sources/tasks/task_implementations/base/task_utils.hpp"
 
 #include <opencv2/highgui/highgui.hpp>
 
@@ -13,11 +14,10 @@ namespace Tasks {
 
 	void OpenMPGrayscaleTask::runInternal(ObjectData& _data)
 	{
-		_data.m_source.copyTo(_data.m_target);
 		//	♂
+		#pragma omp parallel for shared( _data ) schedule( static, 100 )
 		for (int i = 0; i < _data.m_source.rows; ++i)
 		{
-		#pragma omp parallel for shared( _data ) schedule( static, 100 )
 			for (int j = 0; j < _data.m_source.cols; ++j)
 			{
 				auto& sourcePixel = _data.m_source.at< cv::Vec4b >( i, j );
@@ -29,6 +29,56 @@ namespace Tasks {
 					  sourcePixel.val[1] * 604 +
 					  sourcePixel.val[2] * 113 ) >> 10;
 			}
+		}
+	}
+
+
+	OpenMPBinarizationTask::OpenMPBinarizationTask( 
+			ITaskProperties::Ptr _properties
+	)
+		:	BaseClass( _properties )
+	{
+	}
+
+	void OpenMPBinarizationTask::runInternal( ObjectData& _data )
+	{
+		float threshold = Utils::calculateThresholdValue( _data );
+
+		//#pragma omp parallel for shared( _data )
+		//for ( int i = 0; i < _data.m_source.rows; ++i )
+		//{
+		//	for ( int j = 0; j < _data.m_source.cols; ++j )
+		//	{
+		//		auto& sourcePixel = _data.m_source.at< cv::Vec4b >( i, j );
+		//		auto& targetPixel = _data.m_target.at< cv::Vec4b >( i, j );
+
+		//		unsigned char pixelValue =
+		//			( sourcePixel.val[0] * 307 +
+		//			  sourcePixel.val[1] * 604 +
+		//			  sourcePixel.val[2] * 113 ) >> 10;
+
+		//		targetPixel.val[3] = sourcePixel.val[3];
+		//		targetPixel.val[0] = targetPixel.val[1] = targetPixel.val[2]
+		//			= pixelValue > threshold ? 255 : 0;
+		//	}
+		//}
+
+		const int pixelsCount = _data.m_source.rows * _data.m_source.cols;
+
+		#pragma omp parallel for shared( _data )
+		for ( int i = 0; i < pixelsCount; ++i )
+		{
+			auto& sourcePixel = _data.m_source.at< cv::Vec4b >( i );
+			auto& targetPixel = _data.m_target.at< cv::Vec4b >( i );
+
+			unsigned char pixelValue =
+				( sourcePixel.val[0] * 307 +
+				  sourcePixel.val[1] * 604 +
+				  sourcePixel.val[2] * 113 ) >> 10;
+
+			targetPixel.val[3] = sourcePixel.val[3];
+			targetPixel.val[0] = targetPixel.val[1] = targetPixel.val[2]
+				= pixelValue > threshold ? 255 : 0;
 		}
 	}
 
@@ -89,9 +139,7 @@ namespace Tasks {
 		BaseClass::prepareObjectData( _data, _context );
 
 		const int filterWidth = getProperties().getBlurringKernelSize();
-		const float filterSigma = static_cast<float>(
-				getProperties().getSigmaX()
-			);
+		const float filterSigma = static_cast<float>(getProperties().getSigmaX());
 
 		_data.m_filter.reset( new float[filterWidth * filterWidth] );
 		float* filterPtr = _data.m_filter.get();

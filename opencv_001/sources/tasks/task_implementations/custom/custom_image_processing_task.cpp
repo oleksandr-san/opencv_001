@@ -14,8 +14,6 @@ namespace Tasks {
 
 	void CustomGrayscaleTask::runInternal( ObjectData& _data )
 	{
-		_data.m_source.copyTo( _data.m_target );
-
 		for ( int i = 0; i < _data.m_source.rows; ++i )
 		{
 			for ( int j = 0; j < _data.m_source.cols; ++j )
@@ -32,6 +30,35 @@ namespace Tasks {
 		}
 	}
 
+	CustomBinarizationTask::CustomBinarizationTask( 
+			ITaskProperties::Ptr _properties
+		)
+		:	BaseClass( _properties )
+	{
+	}
+
+	void CustomBinarizationTask::runInternal( ObjectData& _data )
+	{
+		float threshold = Utils::calculateThresholdValue(_data);
+
+		for ( int i = 0; i < _data.m_source.rows; ++i )
+		{
+			for ( int j = 0; j < _data.m_source.cols; ++j )
+			{
+				auto& sourcePixel = _data.m_source.at< cv::Vec4b >( i, j );
+				auto& targetPixel = _data.m_target.at< cv::Vec4b >( i, j );
+
+				unsigned char pixelValue =
+					( sourcePixel.val[0] * 307 +
+					  sourcePixel.val[1] * 604 +
+					  sourcePixel.val[2] * 113 ) >> 10;
+
+				targetPixel.val[3] = sourcePixel.val[3];
+				targetPixel.val[0] = targetPixel.val[1] = targetPixel.val[2]
+					= pixelValue > threshold ? 255 : 0;
+			}
+		}
+	}
 
 	CustomBlurTask::CustomBlurTask( 
 			ITaskProperties::Ptr _properties
@@ -87,7 +114,7 @@ namespace Tasks {
 	{
 		BaseClass::prepareObjectData( _data, _context );
 
-		Utils::FilterCreator::createBlurFilter(
+		Utils::createBlurFilter(
 			_data,
 			getProperties().getBlurringKernelSize(),
 			getProperties().getSigmaX()

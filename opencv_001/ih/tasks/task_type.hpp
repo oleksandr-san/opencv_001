@@ -12,6 +12,7 @@ namespace Tasks {
 		enum Enum
 		{
 				Grayscale	= 0
+			,	Binarization
 			,	Blur
 
 			,	Last
@@ -24,6 +25,9 @@ namespace Tasks {
 			{
 			case Grayscale:
 				return "Grayscale";
+
+			case Binarization:
+				return "Binarization";
 
 			case Blur:
 				return "Blur";
@@ -39,6 +43,9 @@ namespace Tasks {
 			{
 			case Grayscale:
 				return "grayscale";
+
+			case Binarization:
+				return "binarization";
 
 			case Blur:
 				return "blur";
@@ -56,6 +63,9 @@ namespace Tasks {
 				return Grayscale;
 
 			case 1:
+				return Binarization;
+
+			case 2:
 				return Blur;
 
 			default:

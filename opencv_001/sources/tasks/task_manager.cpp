@@ -27,13 +27,38 @@ namespace Tasks {
 				return createTaskInternal< GrayscaleCUDA >();
 
 			case TaskImplementationType::OpenCV:
-				return createTaskInternal< OpenCV_Grayscale_Task >();
+				return createTaskInternal< OpenCV_GrayscaleTask >();
 
 			case TaskImplementationType::OpenCV_CUDA:
 				return createTaskInternal< OpenCV_CUDA_GrayscaleTask >();
 
 			case TaskImplementationType::OpenMP:
 				return createTaskInternal< OpenMPGrayscaleTask >();
+
+			default:
+				throw std::invalid_argument("Invalid implementation type!");
+			}
+			break;
+		}
+
+		case TaskType::Binarization:
+		{
+			switch (_implementationType)
+			{
+			case TaskImplementationType::Custom:
+				return createTaskInternal< CustomBinarizationTask >();
+
+			case TaskImplementationType::Custom_CUDA:
+				return createTaskInternal< BinarizationCUDA >();
+
+			case TaskImplementationType::OpenCV:
+				return createTaskInternal< OpenCV_BinarizationTask >();
+
+			case TaskImplementationType::OpenCV_CUDA:
+				return createTaskInternal< OpenCV_CUDA_BinarizationTask >();
+
+			case TaskImplementationType::OpenMP:
+				return createTaskInternal< OpenMPBinarizationTask >();
 
 			default:
 				throw std::invalid_argument("Invalid implementation type!");
@@ -52,10 +77,10 @@ namespace Tasks {
 				return createTaskInternal< BlurCUDA >();
 
 			case TaskImplementationType::OpenCV:
-				return createTaskInternal< OpenCV_Blur_Task >();
+				return createTaskInternal< OpenCV_BlurTask >();
 
 			case TaskImplementationType::OpenCV_CUDA:
-				return createTaskInternal< OpenCV_CUDA_Blur_Task >();
+				return createTaskInternal< OpenCV_CUDA_BlurTask >();
 
 			case TaskImplementationType::OpenMP:
 				return createTaskInternal< OpenMPBlurTask >();

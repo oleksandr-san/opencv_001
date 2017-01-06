@@ -33,6 +33,32 @@ namespace Tasks {
 	};
 
 
+	class OpenCV_CUDA_BinarizationTask
+		:	public Base_OpenCV_CUDA_Task< TaskType::Binarization >
+	{
+
+		typedef
+			Base_OpenCV_CUDA_Task< TaskType::Binarization >
+			BaseClass;
+
+	public:
+
+		OpenCV_CUDA_BinarizationTask( ITaskProperties::Ptr _properties )
+			:	BaseClass( _properties )
+		{
+		}
+
+	protected:
+
+		virtual void processObject(
+			cv::Mat& _hostSource,
+			cv::cuda::GpuMat& _deviceSource,
+			cv::cuda::GpuMat& _deviceTarget
+		) override;
+
+	};
+
+
 	template < TaskType::Enum _Type >
 	class OpenCV_CUDA_FilteringTask
 		:	public Base_OpenCV_CUDA_Task< _Type >
@@ -82,7 +108,7 @@ namespace Tasks {
 	};
 
 
-	class OpenCV_CUDA_Blur_Task
+	class OpenCV_CUDA_BlurTask
 		:	public OpenCV_CUDA_FilteringTask< TaskType::Blur >
 	{
 
@@ -92,7 +118,7 @@ namespace Tasks {
 
 	public:
 
-		OpenCV_CUDA_Blur_Task( ITaskProperties::Ptr _properties )
+		OpenCV_CUDA_BlurTask( ITaskProperties::Ptr _properties )
 			:	BaseClass( _properties )
 		{
 		}

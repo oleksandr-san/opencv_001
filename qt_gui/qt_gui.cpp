@@ -30,8 +30,10 @@ qt_gui::qt_gui(QWidget *parent)
 				<< "Total Time"
 				<< "Load Data Time"
 				<< "Processing Time"
-				<< "Average Processing Time"
 				<< "Save Data Time"
+				<< "Average Load Data Time"
+				<< "Average Processing Time"
+				<< "Average Save Data Time"
 		);
 }
 
@@ -177,8 +179,10 @@ void qt_gui::processTaskResult( const Tasks::ITaskResult& _result )
 			iterationItem->setText(2, convertTime( iteration.total ) );
 			iterationItem->setText(3, convertTime( iteration.load ) );
 			iterationItem->setText(4, convertTime( iteration.process ) );
-			iterationItem->setText(5, convertTime( iteration.process ) );
-			iterationItem->setText(6, convertTime( iteration.save ) );
+			iterationItem->setText(5, convertTime( iteration.save ) );
+			iterationItem->setText(6, convertTime( iteration.load ) );
+			iterationItem->setText(7, convertTime( iteration.process ) );
+			iterationItem->setText(8, convertTime( iteration.save ) );
 
 			objectItem->addChild( iterationItem );
 
@@ -191,8 +195,10 @@ void qt_gui::processTaskResult( const Tasks::ITaskResult& _result )
 		objectItem->setText(2, convertTime( object.total ) );
 		objectItem->setText(3, convertTime( object.load ) );
 		objectItem->setText(4, convertTime( object.process ) );
-		objectItem->setText(5, convertTime( object.process / repeatsCount ) );
-		objectItem->setText(6, convertTime( object.save ) );
+		objectItem->setText(5, convertTime( object.save ) );
+		objectItem->setText(6, convertTime( object.load / repeatsCount ) );
+		objectItem->setText(7, convertTime( object.process / repeatsCount ) );
+		objectItem->setText(8, convertTime( object.save / repeatsCount ) );
 
 		topLevelItem->addChild( objectItem );
 	}
@@ -208,10 +214,17 @@ void qt_gui::processTaskResult( const Tasks::ITaskResult& _result )
 	topLevelItem->setText(2, convertTime( total.total ) );
 	topLevelItem->setText(3, convertTime( total.load ) );
 	topLevelItem->setText(4, convertTime( total.process ) );
-	topLevelItem->setText(5, convertTime( total.process / repeatsCount ) );
-	topLevelItem->setText(6, convertTime( total.save ) );
+	topLevelItem->setText(5, convertTime( total.save ) );
+	topLevelItem->setText(6, convertTime( total.load / repeatsCount ) );
+	topLevelItem->setText(7, convertTime( total.process / repeatsCount ) );
+	topLevelItem->setText(8, convertTime( total.save / repeatsCount ) );
 
 	ui.treeWidget->addTopLevelItem(topLevelItem);
+
+	if ( !objectResults.empty() && !objectResults.back().second.empty() )
+		updateImage(
+			QString::fromStdString( objectResults.back().second.back().m_objectPath )
+		);
 
 	updateState( false );
 }
@@ -278,9 +291,16 @@ void qt_gui::on_pushButton_2_clicked()
 			tr(Resources::OpenFileDialogImageFilter)
 		);
 
+	QString lastImage;
+
 	for ( auto fileName : fileNames )
 		if ( !fileName.isEmpty() )
+		{
 			ui.listWidget->addItem(fileName);
+			lastImage = fileName;
+		}
+
+	updateImage( lastImage );
 }
 
 

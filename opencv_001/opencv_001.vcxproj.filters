@@ -108,6 +108,9 @@
     <ClCompile Include="sources\tasks\task_implementations\custom_cuda\custom_cuda_task.cpp">
       <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\Custom_CUDA</Filter>
     </ClCompile>
+    <ClCompile Include="sources\tasks\task_implementations\base\task_utils.cpp">
+      <Filter>Файлы исходного кода\Sources\Tasks\Task Implementations\Base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ih\objects\iprocessing_object.hpp">

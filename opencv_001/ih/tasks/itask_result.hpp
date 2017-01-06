@@ -19,17 +19,19 @@ namespace Tasks {
 			std::pair< Utils::TimePoint, Utils::TimePoint >
 			TimePointPair;
 
-		struct TimeResult
+		struct IterationResult
 		{
 			TimePointPair m_loadTime;
 			TimePointPair m_processTime;
 			TimePointPair m_saveTime;
+
+			std::string m_objectPath;
 		};
 
 		typedef
 			std::pair<
 					Objects::IProcessingObject::Ptr
-				,	std::vector< TimeResult >
+				,	std::vector< IterationResult >
 			>
 			ObjectResult;
 
