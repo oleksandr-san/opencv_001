@@ -88,15 +88,15 @@ namespace Tasks {
 
 		cv::Ptr< cv::cuda::Filter > getFilter( cv::Mat& _matrix )
 		{
-			auto it = m_filters.find( _matrix.type() );
-			if ( it != m_filters.end() )
-				return it->second;
+			//auto it = m_filters.find( _matrix.type() );
+			//if ( it != m_filters.end() )
+			//	return it->second;
 
-			cv::Ptr< cv::cuda::Filter > filter = createFilter( _matrix );
+			//cv::Ptr< cv::cuda::Filter > filter = createFilter( _matrix );
 
-			m_filters[ _matrix.type() ] = filter;
+			//m_filters[ _matrix.type() ] = filter;
 
-			return filter;
+			return createFilter( _matrix );
 		}
 
 		virtual cv::Ptr< cv::cuda::Filter > createFilter( cv::Mat& _matrix ) = 0;

@@ -22,9 +22,6 @@
     <Filter Include="Файлы исходного кода\Include Headers\Utils">
       <UniqueIdentifier>{38b0cee1-2002-4988-a423-d3150e75a667}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Файлы исходного кода\Include Headers\Tasks">
-      <UniqueIdentifier>{19a9af38-25b7-4c76-87bb-0c69ff6e74c3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Файлы исходного кода\Sources">
       <UniqueIdentifier>{f75ea506-5d72-47d9-946c-126b1d07959f}</UniqueIdentifier>
     </Filter>
@@ -69,6 +66,9 @@
     </Filter>
     <Filter Include="Файлы исходного кода\Sources\Tasks\Task Implementations\Custom_CUDA">
       <UniqueIdentifier>{22c0531a-2e8e-49e5-affe-e9bb7c0596b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Include Headers\Tasks">
+      <UniqueIdentifier>{19a9af38-25b7-4c76-87bb-0c69ff6e74c3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

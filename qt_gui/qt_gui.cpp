@@ -117,7 +117,7 @@ void qt_gui::processTaskResult( const Tasks::ITaskResult& _result )
 	auto convertTime =
 		[]( float _time ) -> QString
 		{
-			return QString::number( _time, 'g', 3) + " s";
+			return QString::number( _time /* * 1000.0 */ , 'g', 3)+ " s";
 		}
 	;
 
@@ -334,3 +334,8 @@ void qt_gui::on_pushButton_clicked()
 	}
 }
 
+
+void qt_gui::on_pushButton_6_clicked()
+{
+    ui.treeWidget->clear();
+}

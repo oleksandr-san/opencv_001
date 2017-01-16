@@ -15,7 +15,7 @@ namespace Tasks {
 	void OpenMPGrayscaleTask::runInternal(ObjectData& _data)
 	{
 		//	♂
-		#pragma omp parallel for shared( _data ) schedule( static, 100 )
+		#pragma omp parallel for shared( _data )
 		for (int i = 0; i < _data.m_source.rows; ++i)
 		{
 			for (int j = 0; j < _data.m_source.cols; ++j)
@@ -44,42 +44,42 @@ namespace Tasks {
 	{
 		float threshold = Utils::calculateThresholdValue( _data );
 
-		//#pragma omp parallel for shared( _data )
-		//for ( int i = 0; i < _data.m_source.rows; ++i )
-		//{
-		//	for ( int j = 0; j < _data.m_source.cols; ++j )
-		//	{
-		//		auto& sourcePixel = _data.m_source.at< cv::Vec4b >( i, j );
-		//		auto& targetPixel = _data.m_target.at< cv::Vec4b >( i, j );
-
-		//		unsigned char pixelValue =
-		//			( sourcePixel.val[0] * 307 +
-		//			  sourcePixel.val[1] * 604 +
-		//			  sourcePixel.val[2] * 113 ) >> 10;
-
-		//		targetPixel.val[3] = sourcePixel.val[3];
-		//		targetPixel.val[0] = targetPixel.val[1] = targetPixel.val[2]
-		//			= pixelValue > threshold ? 255 : 0;
-		//	}
-		//}
-
-		const int pixelsCount = _data.m_source.rows * _data.m_source.cols;
-
 		#pragma omp parallel for shared( _data )
-		for ( int i = 0; i < pixelsCount; ++i )
+		for ( int i = 0; i < _data.m_source.rows; ++i )
 		{
-			auto& sourcePixel = _data.m_source.at< cv::Vec4b >( i );
-			auto& targetPixel = _data.m_target.at< cv::Vec4b >( i );
+			for ( int j = 0; j < _data.m_source.cols; ++j )
+			{
+				auto& sourcePixel = _data.m_source.at< cv::Vec4b >( i, j );
+				auto& targetPixel = _data.m_target.at< cv::Vec4b >( i, j );
 
-			unsigned char pixelValue =
-				( sourcePixel.val[0] * 307 +
-				  sourcePixel.val[1] * 604 +
-				  sourcePixel.val[2] * 113 ) >> 10;
+				unsigned char pixelValue =
+					( sourcePixel.val[0] * 307 +
+					  sourcePixel.val[1] * 604 +
+					  sourcePixel.val[2] * 113 ) >> 10;
 
-			targetPixel.val[3] = sourcePixel.val[3];
-			targetPixel.val[0] = targetPixel.val[1] = targetPixel.val[2]
-				= pixelValue > threshold ? 255 : 0;
+				targetPixel.val[3] = sourcePixel.val[3];
+				targetPixel.val[0] = targetPixel.val[1] = targetPixel.val[2]
+					= pixelValue > threshold ? 255 : 0;
+			}
 		}
+
+		//const int pixelsCount = _data.m_source.rows * _data.m_source.cols;
+
+		//#pragma omp parallel for shared( _data )
+		//for ( int i = 0; i < pixelsCount; ++i )
+		//{
+		//	auto& sourcePixel = _data.m_source.at< cv::Vec4b >( i );
+		//	auto& targetPixel = _data.m_target.at< cv::Vec4b >( i );
+
+		//	unsigned char pixelValue =
+		//		( sourcePixel.val[0] * 307 +
+		//		  sourcePixel.val[1] * 604 +
+		//		  sourcePixel.val[2] * 113 ) >> 10;
+
+		//	targetPixel.val[3] = sourcePixel.val[3];
+		//	targetPixel.val[0] = targetPixel.val[1] = targetPixel.val[2]
+		//		= pixelValue > threshold ? 255 : 0;
+		//}
 	}
 
 
@@ -147,7 +147,7 @@ namespace Tasks {
 		float filterSum = 0.f;
 		const int halfWidth = filterWidth / 2;
 
-		#pragma omp parallel for shared( filterPtr )
+		//#pragma omp parallel for shared( filterPtr )
 		for (int r = -halfWidth; r <= halfWidth; ++r)
 			for (int c = -halfWidth; c <= halfWidth; ++c)
 			{
@@ -158,7 +158,7 @@ namespace Tasks {
 
 		float normalizationFactor = 1.f / filterSum;
 
-		#pragma omp parallel for shared( filterPtr )
+		//#pragma omp parallel for shared( filterPtr )
 		for (int r = -halfWidth; r <= halfWidth; ++r)
 			for (int c = -halfWidth; c <= halfWidth; ++c)
 				filterPtr[(r + halfWidth) * filterWidth + c + halfWidth] *= normalizationFactor;

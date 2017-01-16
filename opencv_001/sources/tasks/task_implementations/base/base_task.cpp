@@ -18,8 +18,6 @@ namespace Tasks {
 	{
 		auto result = std::make_shared< TaskResult >( shared_from_this() );
 
-		const int repeatsCount = getProperties().getRepeatsCount();
-
 		ITaskResult::ObjectResultList& objectResults = result->takeObjectResults();
 
 		for ( auto object : _objects )
@@ -27,21 +25,23 @@ namespace Tasks {
 					ITaskResult::ObjectResult(
 							object
 						,	std::vector< ITaskResult::IterationResult >(
-								static_cast< size_t >( repeatsCount )
+								static_cast< size_t >( getProperties().getRepeatsCount() )
 							)
 					)
 				);
 
 		TaskContext context;
 
-		const size_t objectsCount = _objects.size();
+		const int repeatsCount = getProperties().getRepeatsCount();
 		for ( int i = 0; i < repeatsCount; ++i )
 		{
 			context.setIteration( i );
 
+			const size_t objectsCount = _objects.size();
 			for ( int j = 0; j < objectsCount; ++j )
 			{
 				context.setObject( _objects[ j ] );
+
 				ITaskResult::IterationResult& iterationResult
 					= objectResults[ j ].second[ i ];
 
@@ -109,8 +109,20 @@ namespace Tasks {
 				?	objectPath.parent_path()
 				:	Utils::Path( directoryStr );
 
-			if ( !Filesystem::exists(directoryPath) )
+			if ( !directoryStr.empty() && !Filesystem::exists(directoryPath) )
 				Filesystem::create_directory(directoryPath);
+
+			//static const std::string outputPathFormat = "%s/%s_%s_%s_%d%s";
+
+			//auto formattedPath =
+			//	boost::format( outputPathFormat )
+			//		% directoryPath.string()
+			//		% objectPath.stem().string()
+			//		% TaskType::getCodeName( getType() )
+			//		% TaskImplementationType::getCodeName( getImplementationType() )
+			//		% ( _context.getIteration() + 1 )
+			//		% objectPath.extension().string()
+			//	;
 
 			outputPath =
 				( directoryPath / objectPath.stem() ).string() +

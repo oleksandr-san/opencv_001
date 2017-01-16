@@ -23,31 +23,7 @@ void check(T err, const char* const func, const char* const file, const int line
 	}
 }
 
-#define WARP_SIZE 32
 
-__global__
-void grayscale_optimized(
-	cv::cuda::PtrStepSz<uchar4> _source,
-	cv::cuda::PtrStepSz<uchar4> _target,
-	int _elemsPerThread
-)
-{
-	int y = blockDim.y * blockIdx.y + threadIdx.y;
-	int x = blockDim.x * blockIdx.x + threadIdx.x;
-
-	const int loopStart = (x / WARP_SIZE * WARP_SIZE) * (_elemsPerThread - 1) + x;
-	for (int i = loopStart, j = 0; j < _elemsPerThread && i < _source.cols; i += WARP_SIZE, ++j)
-	{
-		const uchar4& sourcePixel = _source(y, i);
-		uchar4& targetPixel = _target(y, i);
-
-		targetPixel.w = sourcePixel.w;
-		targetPixel.x = targetPixel.y = targetPixel.z =
-			( sourcePixel.x * 307 +
-			  sourcePixel.y * 604 +
-			  sourcePixel.z * 113 ) >> 10;
-	}
-}
 
 __global__
 void grayscale_simple(

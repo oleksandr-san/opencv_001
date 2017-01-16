@@ -19,6 +19,7 @@
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -55,11 +56,16 @@ public:
     QGridLayout *gridLayout_5;
     QVBoxLayout *verticalLayout_3;
     QSplitter *splitter_3;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_9;
     QGroupBox *groupBox_4;
     QGridLayout *gridLayout_9;
     QListWidget *listWidget;
+    QWidget *widget_2;
+    QHBoxLayout *horizontalLayout_3;
+    QPushButton *pushButton_2;
+    QPushButton *pushButton_3;
+    QPushButton *pushButton;
     QGroupBox *groupBox;
     QFormLayout *formLayout;
     QLabel *label_2;
@@ -71,20 +77,18 @@ public:
     QLabel *label_3;
     QSpinBox *spinBox_2;
     QLabel *label_4;
+    QDoubleSpinBox *doubleSpinBox;
     QLabel *label_6;
     QLineEdit *lineEdit;
     QLabel *label;
     QComboBox *comboBox_3;
-    QDoubleSpinBox *doubleSpinBox;
     QLabel *label_9;
     QComboBox *comboBox_4;
     QGroupBox *groupBox_3;
     QGridLayout *gridLayout_8;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_3;
     QPushButton *pushButton_4;
-    QPushButton *pushButton;
-    QWidget *widget1;
+    QPushButton *pushButton_6;
+    QWidget *widget;
     QGridLayout *gridLayout_3;
     QGroupBox *groupBox_2;
     QGridLayout *gridLayout_6;
@@ -162,14 +166,14 @@ public:
         splitter_3 = new QSplitter(verticalWidget_2);
         splitter_3->setObjectName(QStringLiteral("splitter_3"));
         splitter_3->setOrientation(Qt::Vertical);
-        widget = new QWidget(splitter_3);
-        widget->setObjectName(QStringLiteral("widget"));
-        verticalLayout_9 = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(splitter_3);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        verticalLayout_9 = new QVBoxLayout(layoutWidget);
         verticalLayout_9->setSpacing(6);
         verticalLayout_9->setContentsMargins(11, 11, 11, 11);
         verticalLayout_9->setObjectName(QStringLiteral("verticalLayout_9"));
         verticalLayout_9->setContentsMargins(0, 0, 0, 0);
-        groupBox_4 = new QGroupBox(widget);
+        groupBox_4 = new QGroupBox(layoutWidget);
         groupBox_4->setObjectName(QStringLiteral("groupBox_4"));
         gridLayout_9 = new QGridLayout(groupBox_4);
         gridLayout_9->setSpacing(6);
@@ -180,10 +184,35 @@ public:
 
         gridLayout_9->addWidget(listWidget, 1, 0, 1, 1);
 
+        widget_2 = new QWidget(groupBox_4);
+        widget_2->setObjectName(QStringLiteral("widget_2"));
+        horizontalLayout_3 = new QHBoxLayout(widget_2);
+        horizontalLayout_3->setSpacing(6);
+        horizontalLayout_3->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
+        pushButton_2 = new QPushButton(widget_2);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        pushButton_2->setEnabled(true);
+
+        horizontalLayout_3->addWidget(pushButton_2);
+
+        pushButton_3 = new QPushButton(widget_2);
+        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+
+        horizontalLayout_3->addWidget(pushButton_3);
+
+        pushButton = new QPushButton(widget_2);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+
+        horizontalLayout_3->addWidget(pushButton);
+
+
+        gridLayout_9->addWidget(widget_2, 2, 0, 1, 1);
+
 
         verticalLayout_9->addWidget(groupBox_4);
 
-        splitter_3->addWidget(widget);
+        splitter_3->addWidget(layoutWidget);
         groupBox = new QGroupBox(splitter_3);
         groupBox->setObjectName(QStringLiteral("groupBox"));
         formLayout = new QFormLayout(groupBox);
@@ -253,6 +282,12 @@ public:
 
         formLayout->setWidget(6, QFormLayout::LabelRole, label_4);
 
+        doubleSpinBox = new QDoubleSpinBox(groupBox);
+        doubleSpinBox->setObjectName(QStringLiteral("doubleSpinBox"));
+        doubleSpinBox->setValue(1);
+
+        formLayout->setWidget(6, QFormLayout::FieldRole, doubleSpinBox);
+
         label_6 = new QLabel(groupBox);
         label_6->setObjectName(QStringLiteral("label_6"));
 
@@ -280,12 +315,6 @@ public:
 
         formLayout->setWidget(9, QFormLayout::FieldRole, comboBox_3);
 
-        doubleSpinBox = new QDoubleSpinBox(groupBox);
-        doubleSpinBox->setObjectName(QStringLiteral("doubleSpinBox"));
-        doubleSpinBox->setValue(1);
-
-        formLayout->setWidget(6, QFormLayout::FieldRole, doubleSpinBox);
-
         label_9 = new QLabel(groupBox);
         label_9->setObjectName(QStringLiteral("label_9"));
 
@@ -306,26 +335,15 @@ public:
         gridLayout_8->setSpacing(6);
         gridLayout_8->setContentsMargins(11, 11, 11, 11);
         gridLayout_8->setObjectName(QStringLiteral("gridLayout_8"));
-        pushButton_2 = new QPushButton(groupBox_3);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setEnabled(true);
-
-        gridLayout_8->addWidget(pushButton_2, 0, 0, 1, 1);
-
-        pushButton_3 = new QPushButton(groupBox_3);
-        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
-
-        gridLayout_8->addWidget(pushButton_3, 0, 1, 1, 1);
-
         pushButton_4 = new QPushButton(groupBox_3);
         pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
 
         gridLayout_8->addWidget(pushButton_4, 1, 0, 1, 1);
 
-        pushButton = new QPushButton(groupBox_3);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton_6 = new QPushButton(groupBox_3);
+        pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
 
-        gridLayout_8->addWidget(pushButton, 1, 1, 1, 1);
+        gridLayout_8->addWidget(pushButton_6, 1, 1, 1, 1);
 
 
         verticalLayout_3->addWidget(groupBox_3);
@@ -338,13 +356,13 @@ public:
         gridLayout_7->addWidget(splitter, 0, 0, 1, 1);
 
         splitter_2->addWidget(verticalWidget_3);
-        widget1 = new QWidget(splitter_2);
-        widget1->setObjectName(QStringLiteral("widget1"));
-        gridLayout_3 = new QGridLayout(widget1);
+        widget = new QWidget(splitter_2);
+        widget->setObjectName(QStringLiteral("widget"));
+        gridLayout_3 = new QGridLayout(widget);
         gridLayout_3->setSpacing(6);
         gridLayout_3->setContentsMargins(11, 11, 11, 11);
         gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
-        groupBox_2 = new QGroupBox(widget1);
+        groupBox_2 = new QGroupBox(widget);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
         gridLayout_6 = new QGridLayout(groupBox_2);
         gridLayout_6->setSpacing(6);
@@ -363,7 +381,7 @@ public:
 
         gridLayout_3->addWidget(groupBox_2, 0, 0, 1, 1);
 
-        splitter_2->addWidget(widget1);
+        splitter_2->addWidget(widget);
 
         gridLayout_2->addWidget(splitter_2, 0, 0, 1, 1);
 
@@ -386,6 +404,9 @@ public:
         actionClose->setText(QApplication::translate("qt_guiClass", "Close", 0));
         label_8->setText(QString());
         groupBox_4->setTitle(QApplication::translate("qt_guiClass", "Image List", 0));
+        pushButton_2->setText(QApplication::translate("qt_guiClass", "Add", 0));
+        pushButton_3->setText(QApplication::translate("qt_guiClass", "Remove", 0));
+        pushButton->setText(QApplication::translate("qt_guiClass", "Show", 0));
         groupBox->setTitle(QApplication::translate("qt_guiClass", "Task Properties", 0));
         label_2->setText(QApplication::translate("qt_guiClass", "Task Type", 0));
         label_5->setText(QApplication::translate("qt_guiClass", "Implementation Type", 0));
@@ -396,10 +417,8 @@ public:
         label->setText(QApplication::translate("qt_guiClass", "Modify Original", 0));
         label_9->setText(QApplication::translate("qt_guiClass", "Optimize Block Processing", 0));
         groupBox_3->setTitle(QApplication::translate("qt_guiClass", "Processing", 0));
-        pushButton_2->setText(QApplication::translate("qt_guiClass", "Add", 0));
-        pushButton_3->setText(QApplication::translate("qt_guiClass", "Remove", 0));
         pushButton_4->setText(QApplication::translate("qt_guiClass", "Run Task", 0));
-        pushButton->setText(QApplication::translate("qt_guiClass", "Show", 0));
+        pushButton_6->setText(QApplication::translate("qt_guiClass", "Clear Results", 0));
         groupBox_2->setTitle(QApplication::translate("qt_guiClass", "Results", 0));
     } // retranslateUi
 
